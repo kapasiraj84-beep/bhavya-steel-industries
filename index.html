@@ -4,33 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhavya Steel Industries | Premium Alloy & Mild Steel Stockist | Naroda, Ahmedabad</title>
-    <meta name="description" content="Leading stockist and supplier of Alloy Steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), Mild Steel, Bright Bars, C45 Plates, MS Plates, and Industrial Hardware in Naroda, Ahmedabad, Gujarat">
+    <meta name="description" content="Leading stockist and supplier of Alloy Steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, F11), Mild Steel, Bright Bars, C45 Plates, MS Plates, and Industrial Hardware in Naroda, Ahmedabad, Gujarat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a;
-            --primary-light: #3b82f6;
-            --primary-dark: #1e40af;
-            --secondary: #0f172a;
-            --accent: #f59e0b;
-            --accent-light: #fbbf24;
-            --success: #10b981;
-            --error: #ef4444;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
-            --grey: #64748b;
-            --grey-light: #94a3b8;
-            --light: #f8fafc;
+            --primary: #d4af37;
+            --primary-light: #f4d03f;
+            --primary-dark: #b8941e;
+            --secondary: #0a0a0a;
+            --accent: #d4af37;
+            --accent-light: #f4d03f;
+            --success: #2ecc71;
+            --error: #e74c3c;
+            --dark: #0a0a0a;
+            --dark-light: #1a1a1a;
+            --dark-card: #141414;
+            --grey: #a0a0a0;
+            --grey-light: #c0c0c0;
+            --grey-dark: #505050;
+            --light: #f8f8f8;
             --white: #ffffff;
-            --border: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
-            --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
-            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --border: #2a2a2a;
+            --border-light: #3a3a3a;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.6);
+            --shadow-gold: 0 8px 32px rgba(212,175,55,0.3);
+            --gradient-primary: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+            --gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            --gradient-card: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);
         }
         
         * { 
@@ -42,8 +46,8 @@
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6; 
-            color: var(--dark);
-            background: var(--white);
+            color: var(--grey-light);
+            background: var(--dark);
             overflow-x: hidden;
         }
         
@@ -55,7 +59,7 @@
 
         /* Header */
         header { 
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             padding: 1rem 0; 
@@ -63,14 +67,14 @@
             width: 100%; 
             top: 0; 
             z-index: 1000; 
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
             transition: all 0.3s ease;
         }
 
         header.scrolled {
             padding: 0.75rem 0;
-            box-shadow: var(--shadow-md);
-            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-lg);
+            background: rgba(10, 10, 10, 0.98);
         }
         
         .navbar .container { 
@@ -92,13 +96,14 @@
             background: white;
             padding: 4px;
             border-radius: 8px;
-            border: 2px solid var(--border);
+            border: 2px solid var(--primary);
             transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(212,175,55,0.3);
         }
 
         .logo-img:hover {
             transform: scale(1.05);
-            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(212,175,55,0.5);
         }
         
         .logo-text h1 { 
@@ -109,7 +114,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.5px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
         }
         
         .tagline { 
@@ -127,7 +132,7 @@
         }
         
         .nav-menu a { 
-            color: var(--dark);
+            color: var(--grey-light);
             text-decoration: none; 
             font-weight: 600;
             font-size: 0.9rem;
@@ -143,21 +148,22 @@
         }
 
         .nav-menu a.cta-btn {
-            background: var(--gradient-accent);
-            color: white;
+            background: var(--gradient-primary);
+            color: var(--dark);
             padding: 8px 20px;
             border-radius: 8px;
             border-bottom: none;
+            font-weight: 700;
         }
 
         .nav-menu a.cta-btn:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-gold);
         }
 
         /* Hero Section */
         .hero { 
-            background: var(--gradient-primary);
+            background: var(--gradient-dark);
             color: white; 
             padding: 140px 24px 80px; 
             margin-top: 73px;
@@ -173,7 +179,7 @@
             right: 0;
             bottom: 0;
             background: url('https://5.imimg.com/data5/SELLER/Default/2023/12/366686362/XE/ZC/QZ/63421244/carbon-alloy-steel-round-bars.jpg') center/cover;
-            opacity: 0.08;
+            opacity: 0.05;
             z-index: 0;
         }
 
@@ -184,7 +190,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(212,175,55,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
             opacity: 0.3;
         }
         
@@ -208,9 +214,10 @@
             background: white; 
             border-radius: 20px; 
             padding: 20px;
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-gold);
             object-fit: contain;
             animation: float 3s ease-in-out infinite;
+            border: 3px solid var(--primary);
         }
 
         @keyframes float {
@@ -223,32 +230,38 @@
             font-weight: 900;
             letter-spacing: -1.5px;
             margin-bottom: 1rem;
-            font-family: 'Poppins', sans-serif;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 20px rgba(212,175,55,0.3);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero-title-group p {
             font-size: 1.2rem;
-            opacity: 0.95;
+            opacity: 0.9;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--grey-light);
         }
         
         .hero-subtitle { 
             font-size: 1.3rem; 
             margin-bottom: 1rem; 
             font-weight: 700;
-            opacity: 0.95;
+            color: var(--primary-light);
         }
         
         .hero-desc { 
             font-size: 1.05rem; 
             margin-bottom: 2.5rem; 
-            opacity: 0.9;
+            opacity: 0.85;
             line-height: 1.8;
             max-width: 850px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--grey-light);
         }
         
         .hero-buttons { 
@@ -269,39 +282,38 @@
             border: 2px solid transparent;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
         
         .btn:hover { 
             transform: translateY(-2px); 
-            box-shadow: var(--shadow-lg);
         }
         
         .btn-primary { 
-            background: var(--gradient-accent);
-            color: white;
+            background: var(--gradient-primary);
+            color: var(--dark);
+            font-weight: 800;
         }
 
         .btn-primary:hover {
-            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            box-shadow: var(--shadow-gold);
         }
         
         .btn-secondary { 
-            background: rgba(255,255,255,0.15);
+            background: rgba(212,175,55,0.1);
             backdrop-filter: blur(10px);
-            color: white; 
-            border: 2px solid rgba(255,255,255,0.3);
+            color: var(--primary);
+            border: 2px solid var(--primary);
         }
         
         .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
-            border-color: white;
+            background: var(--primary);
+            color: var(--dark);
         }
 
         /* Trust Bar */
         .trust-bar {
-            background: var(--light);
+            background: var(--dark-light);
             padding: 2rem 24px;
             border-bottom: 1px solid var(--border);
         }
@@ -335,7 +347,7 @@
         .trust-item h4 {
             font-size: 0.9rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--white);
             margin-bottom: 0.25rem;
         }
 
@@ -355,8 +367,8 @@
             margin-bottom: 0.75rem; 
             font-weight: 900;
             letter-spacing: -1px;
-            font-family: 'Poppins', sans-serif;
-            background: var(--gradient-dark);
+            font-family: 'Playfair Display', serif;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -372,7 +384,7 @@
 
         /* Products Section */
         .products {
-            background: var(--white);
+            background: var(--dark);
         }
         
         .product-grid { 
@@ -383,7 +395,7 @@
         }
         
         .product-card { 
-            background: white; 
+            background: var(--gradient-card);
             border-radius: 16px; 
             box-shadow: var(--shadow-md);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -406,7 +418,8 @@
         
         .product-card:hover { 
             transform: translateY(-8px); 
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--primary);
         }
 
         .product-card:hover::before {
@@ -417,7 +430,7 @@
             width: 100%;
             height: 280px;
             overflow: hidden;
-            background: var(--light);
+            background: var(--dark-card);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -432,7 +445,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
         }
 
         .product-image {
@@ -453,7 +466,7 @@
         .product-badge {
             display: inline-block;
             background: var(--gradient-primary);
-            color: white;
+            color: var(--dark);
             padding: 4px 12px;
             border-radius: 6px;
             font-size: 0.75rem;
@@ -464,23 +477,24 @@
         }
 
         .product-badge.bright {
-            background: var(--gradient-accent);
+            background: linear-gradient(135deg, #f4d03f 0%, #d4af37 100%);
         }
 
         .product-badge.mild-steel {
-            background: var(--gradient-dark);
+            background: linear-gradient(135deg, #808080 0%, #a0a0a0 100%);
         }
 
         .product-badge.plate {
-            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            background: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 100%);
+            color: var(--dark);
         }
         
         .product-card h3 { 
             font-size: 1.4rem; 
             margin-bottom: 0.75rem; 
             font-weight: 800;
-            color: var(--dark);
-            font-family: 'Poppins', sans-serif;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
         }
         
         .product-card p { 
@@ -491,17 +505,17 @@
         }
         
         .product-specs {
-            background: var(--light);
+            background: var(--dark-card);
             padding: 1.25rem;
             border-radius: 10px;
             margin-bottom: 1.25rem;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-light);
         }
 
         .product-specs h4 {
             font-size: 0.85rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--primary);
             margin-bottom: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -527,7 +541,7 @@
         
         .product-card ul li:before { 
             content: "✓"; 
-            color: var(--success);
+            color: var(--primary);
             font-weight: bold; 
             margin-right: 0.75rem;
             font-size: 1rem;
@@ -536,7 +550,7 @@
         .product-cta {
             display: inline-block;
             background: var(--gradient-primary);
-            color: white;
+            color: var(--dark);
             padding: 10px 24px;
             border-radius: 8px;
             text-decoration: none;
@@ -547,12 +561,12 @@
 
         .product-cta:hover {
             transform: translateX(4px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-gold);
         }
 
         /* About Section */
         .about { 
-            background: var(--light);
+            background: var(--dark-light);
         }
         
         .about-content {
@@ -573,14 +587,14 @@
             background: white;
             padding: 20px;
             border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            border: 2px solid var(--border);
+            box-shadow: var(--shadow-gold);
+            border: 3px solid var(--primary);
             transition: all 0.3s ease;
         }
 
         .about-logo:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow-xl);
+            box-shadow: 0 0 40px rgba(212,175,55,0.5);
         }
         
         .about-text h3 { 
@@ -591,7 +605,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
         }
         
         .about-text p { 
@@ -612,7 +626,7 @@
             display: flex; 
             align-items: center; 
             gap: 1rem; 
-            background: white;
+            background: var(--dark-card);
             padding: 1.5rem; 
             border-radius: 12px; 
             box-shadow: var(--shadow-sm);
@@ -637,17 +651,18 @@
         
         .feature span {
             font-weight: 600;
-            color: var(--dark);
+            color: var(--grey-light);
             font-size: 0.95rem;
         }
         
         .gst-info { 
             margin-top: 3rem; 
             padding: 2rem; 
-            background: var(--gradient-dark);
-            color: white;
+            background: var(--gradient-card);
+            color: var(--grey-light);
             border-radius: 16px; 
             box-shadow: var(--shadow-lg);
+            border: 1px solid var(--primary);
         }
         
         .gst-info p {
@@ -660,9 +675,13 @@
             margin-bottom: 0;
         }
 
+        .gst-info strong {
+            color: var(--primary);
+        }
+
         /* Contact Section */
         .contact { 
-            background: var(--white);
+            background: var(--dark);
         }
         
         .contact-grid { 
@@ -673,7 +692,7 @@
         }
         
         .info-card { 
-            background: var(--light);
+            background: var(--dark-card);
             padding: 2rem; 
             border-radius: 16px; 
             text-align: center; 
@@ -700,9 +719,9 @@
         .info-card h3 { 
             font-size: 1.2rem; 
             margin-bottom: 0.75rem; 
-            color: var(--dark);
+            color: var(--white);
             font-weight: 800;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
         }
         
         .info-card p { 
@@ -713,7 +732,7 @@
         }
         
         .whatsapp-link { 
-            color: #25D366; 
+            color: #2ecc71;
             text-decoration: none; 
             font-weight: 700;
             transition: all 0.3s ease;
@@ -721,13 +740,15 @@
         
         .whatsapp-link:hover { 
             text-decoration: underline;
+            color: var(--primary);
         }
 
         /* Footer */
         footer { 
             background: var(--gradient-dark);
-            color: white; 
+            color: var(--grey-light);
             padding: 4rem 24px 2rem; 
+            border-top: 1px solid var(--border);
         }
         
         .footer-content { 
@@ -745,18 +766,19 @@
             background: white;
             padding: 12px;
             border-radius: 12px;
+            border: 2px solid var(--primary);
         }
         
         .footer-section h3 { 
-            color: white;
+            color: var(--primary);
             margin-bottom: 1.5rem;
             font-weight: 800;
             font-size: 1.1rem;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
         }
         
         .footer-section p { 
-            color: rgba(255,255,255,0.8);
+            color: var(--grey);
             margin-bottom: 0.75rem;
             line-height: 1.7;
             font-size: 0.9rem;
@@ -768,25 +790,25 @@
         
         .footer-section ul li { 
             margin-bottom: 0.75rem; 
-            color: rgba(255,255,255,0.8);
+            color: var(--grey);
             font-size: 0.9rem;
         }
         
         .footer-section a {
-            color: rgba(255,255,255,0.8);
+            color: var(--grey);
             text-decoration: none;
             transition: all 0.3s ease;
         }
         
         .footer-section a:hover {
-            color: white;
+            color: var(--primary);
         }
         
         .footer-bottom { 
             text-align: center; 
             padding-top: 2rem; 
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.7);
+            border-top: 1px solid var(--border);
+            color: var(--grey-dark);
             font-size: 0.9rem;
         }
 
@@ -837,7 +859,7 @@
                     <p>Round Bars | Square | Flat | Hexagon | Plates</p>
                 </div>
                 <p class="hero-subtitle">Premium Alloy Steel & Mild Steel Stockist</p>
-                <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products, bright bars, C45 plates, MS plates, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
+                <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, F11), mild steel products, bright bars, C45 plates, MS plates, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">View Products</a>
                     <a href="quote-request.html" class="btn btn-secondary">Request Quote</a>
@@ -937,28 +959,6 @@
                                 <li>Diameter: 10mm to 150mm</li>
                                 <li>Finish: Hot Rolled/Bright</li>
                                 <li>Application: Gears, Shafts</li>
-                            </ul>
-                        </div>
-                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
-                    </div>
-                </div>
-
-                <!-- D3 Tool Steel Bars -->
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/QD/OI/AU/63421244/d3-alloy-steel-round-bar-2-500x500.jpg" alt="D3 Alloy Steel Round Bar" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <span class="product-badge">Tool Steel</span>
-                        <h3>D3 Tool Steel Bars</h3>
-                        <p>High carbon, high chromium cold work tool steel for dies and punches.</p>
-                        <div class="product-specs">
-                            <h4>Specifications</h4>
-                            <ul>
-                                <li>Grade: D3 (1.2080)</li>
-                                <li>Diameter: 10mm to 80mm</li>
-                                <li>Finish: Annealed/Hardened</li>
-                                <li>Application: Dies, Punches</li>
                             </ul>
                         </div>
                         <a href="quote-request.html" class="product-cta">Request Quote →</a>
@@ -1244,7 +1244,7 @@
                 <div class="about-text">
                     <h3>Excellence in Steel Distribution</h3>
                     <p>Bhavya Steel Industries is a premier stockist and supplier of high-quality alloy steel and mild steel products based in Naroda, Ahmedabad. With a commitment to excellence and customer satisfaction, we serve diverse industries including construction, manufacturing, automotive, and engineering sectors across Gujarat.</p>
-                    <p>Our extensive inventory includes premium alloy steel grades (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products in various forms (round bars, square bars, flat bars, hexagon bars), bright bars with superior finish, C45 plates, MS plates, metal strips, stainless steel plates, and a comprehensive range of industrial tools and hardware.</p>
+                    <p>Our extensive inventory includes premium alloy steel grades (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, F11), mild steel products in various forms (round bars, square bars, flat bars, hexagon bars), bright bars with superior finish, C45 plates, MS plates, metal strips, stainless steel plates, and a comprehensive range of industrial tools and hardware.</p>
                     <p>Strategically located near NH-8 in Naroda, we ensure timely delivery and competitive pricing while maintaining the highest quality standards. Our experienced team provides expert technical support to help you select the right materials for your specific applications.</p>
                 </div>
                 <div class="features">
@@ -1305,7 +1305,7 @@
                 <div class="info-card">
                     <i class="fas fa-id-card"></i>
                     <h3>GST Number</h3>
-                    <p style="font-weight: 700; font-size: 1.05rem; color: var(--dark);">24AWIPK1900F1Z1</p>
+                    <p style="font-weight: 700; font-size: 1.05rem; color: var(--primary);">24AWIPK1900F1Z1</p>
                 </div>
             </div>
         </div>
