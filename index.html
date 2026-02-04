@@ -63,13 +63,11 @@
         }
         
         .logo-img { 
-            width: 55px; 
-            height: 55px; 
+            width: 70px; 
+            height: 70px; 
             object-fit: contain;
-            border-radius: 8px;
-            border: 2px solid var(--border-color);
-            padding: 4px;
             background: white;
+            padding: 4px;
         }
         
         .logo-text h1 { 
@@ -124,7 +122,7 @@
             background: var(--gradient-primary);
             color: white; 
             padding: 140px 24px 80px; 
-            margin-top: 73px;
+            margin-top: 90px;
             position: relative;
             overflow: hidden;
         }
@@ -151,29 +149,35 @@
         .hero-logo-container {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            justify-content: center;
+            gap: 2rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
         
         .hero-logo { 
-            width: 100px; 
-            height: 100px; 
+            width: 180px; 
+            height: 180px; 
             background: white; 
-            border-radius: 12px; 
-            padding: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-radius: 16px; 
+            padding: 20px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
             object-fit: contain;
         }
         
+        .hero-title-group {
+            text-align: center;
+        }
+        
         .hero-title-group h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             letter-spacing: -1px;
             margin-bottom: 0.5rem;
         }
         
         .hero-title-group p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             opacity: 0.95;
             font-weight: 500;
         }
@@ -183,6 +187,7 @@
             margin-bottom: 1rem; 
             font-weight: 600;
             opacity: 0.95;
+            text-align: center;
         }
         
         .hero-desc { 
@@ -190,12 +195,14 @@
             margin-bottom: 2.5rem; 
             opacity: 0.9;
             line-height: 1.7;
+            text-align: center;
         }
         
         .hero-buttons { 
             display: flex; 
             gap: 1rem; 
             flex-wrap: wrap; 
+            justify-content: center;
         }
         
         .btn { 
@@ -310,6 +317,22 @@
         .about-content {
             max-width: 1000px;
             margin: 0 auto;
+        }
+        
+        .about-logo-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .about-logo {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin: 0 auto 2rem;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
         }
         
         .about-text h3 { 
@@ -539,6 +562,16 @@
             margin-bottom: 3rem; 
         }
         
+        .footer-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+        }
+        
         .footer-section h3 { 
             color: white;
             margin-bottom: 1.5rem;
@@ -587,6 +620,8 @@
             .product-grid { grid-template-columns: 1fr; }
             .hero-logo-container { flex-direction: column; text-align: center; }
             .gallery-grid { grid-template-columns: 1fr; }
+            .hero-logo { width: 140px; height: 140px; }
+            .about-logo { width: 150px; height: 150px; }
         }
     </style>
 </head>
@@ -595,7 +630,7 @@
         <nav class="navbar">
             <div class="container">
                 <div class="logo-section">
-                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-19-28-462Z-6fdb9a62-chat-image-1770182368443-0.jpg" alt="BSI Logo" class="logo-img">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="logo-img">
                     <div class="logo-text">
                         <h1>BHAVYA STEEL INDUSTRIES</h1>
                         <p class="tagline">Premium Steel Solutions</p>
@@ -616,11 +651,11 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-logo-container">
-                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-19-28-462Z-6fdb9a62-chat-image-1770182368443-0.jpg" alt="Bhavya Steel Industries" class="hero-logo">
-                    <div class="hero-title-group">
-                        <h1>BHAVYA STEEL INDUSTRIES</h1>
-                        <p>Round Bars | Square | Flat | Hexagon</p>
-                    </div>
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="Bhavya Steel Industries" class="hero-logo">
+                </div>
+                <div class="hero-title-group">
+                    <h1>BHAVYA STEEL INDUSTRIES</h1>
+                    <p>Round Bars | Square | Flat | Hexagon</p>
                 </div>
                 <p class="hero-subtitle">Stockist & Suppliers of Premium Alloy Steel & Mild Steel Products</p>
                 <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products, bright bars, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
@@ -670,6 +705,9 @@
             <h2 class="section-title">About Us</h2>
             <p class="section-subtitle">Your Trusted Partner in Steel Supply</p>
             <div class="about-content">
+                <div class="about-logo-section">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="Bhavya Steel Industries Logo" class="about-logo">
+                </div>
                 <div class="about-text">
                     <h3>Excellence in Steel Distribution</h3>
                     <p>Bhavya Steel Industries is a premier stockist and supplier of high-quality alloy steel and mild steel products based in Naroda, Ahmedabad. With a commitment to excellence and customer satisfaction, we serve diverse industries including construction, manufacturing, automotive, and engineering sectors across Gujarat.</p>
@@ -980,6 +1018,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="footer-logo">
                     <h3>Bhavya Steel Industries</h3>
                     <p>Leading stockist and supplier of premium alloy steel, mild steel, bright bars, and industrial hardware in Naroda, Ahmedabad.</p>
                     <p style="margin-top: 1.5rem;"><strong>GST:</strong> 24AWIPK1900F1Z1</p>
