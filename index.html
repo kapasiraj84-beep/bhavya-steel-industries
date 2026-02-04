@@ -6,48 +6,92 @@
     <title>Bhavya Steel Industries | Premium Alloy & Mild Steel Stockist | Naroda, Ahmedabad</title>
     <meta name="description" content="Leading stockist and supplier of Alloy Steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), Mild Steel, Bright Bars, and Industrial Hardware in Naroda, Ahmedabad, Gujarat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #1e3a5f;
-            --secondary-blue: #2c5282;
-            --accent-steel: #4a5568;
-            --light-grey: #f7fafc;
-            --medium-grey: #e2e8f0;
-            --dark-grey: #2d3748;
-            --text-primary: #1a202c;
-            --text-secondary: #4a5568;
-            --border-color: #cbd5e0;
-            --success-green: #38a169;
-            --gradient-primary: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
-            --gradient-light: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #14b8a6;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --grey: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
         
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6; 
-            color: var(--text-primary);
-            background: #ffffff;
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
         }
         
         .container { 
-            max-width: 1280px; 
+            max-width: 1400px; 
             margin: 0 auto; 
             padding: 0 24px; 
         }
-        
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Animated Background */
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         /* Header */
         header { 
-            background: #ffffff;
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             padding: 1rem 0; 
             position: fixed; 
             width: 100%; 
             top: 0; 
             z-index: 1000; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.98);
         }
         
         .navbar .container { 
@@ -60,73 +104,83 @@
             display: flex; 
             align-items: center; 
             gap: 1rem; 
+            transition: transform 0.3s ease;
+        }
+
+        .logo-section:hover {
+            transform: scale(1.02);
         }
         
         .logo-img { 
-            width: 70px; 
-            height: 70px; 
+            width: 60px; 
+            height: 60px; 
             object-fit: contain;
             background: white;
-            padding: 4px;
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .logo-img:hover {
+            box-shadow: var(--shadow-lg);
+            transform: rotate(5deg);
         }
         
         .logo-text h1 { 
-            font-size: 1.5rem; 
-            font-weight: 700;
-            color: var(--primary-blue);
+            font-size: 1.4rem; 
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -0.5px;
+            font-family: 'Space Grotesk', sans-serif;
         }
         
         .tagline { 
-            font-size: 0.8rem; 
-            color: var(--text-secondary);
-            font-weight: 500;
+            font-size: 0.75rem; 
+            color: var(--grey);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .nav-menu { 
             display: flex; 
             list-style: none; 
-            gap: 2.5rem; 
+            gap: 2rem; 
         }
         
         .nav-menu a { 
-            color: var(--text-primary);
+            color: var(--dark);
             text-decoration: none; 
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
             position: relative;
+            padding: 8px 16px;
+            border-radius: 8px;
         }
         
         .nav-menu a:hover { 
-            color: var(--secondary-blue);
+            background: var(--gradient-1);
+            color: white;
+            transform: translateY(-2px);
         }
-        
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary-blue);
-            transition: width 0.3s;
-        }
-        
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hero */
+
+        /* Hero Section */
         .hero { 
-            background: var(--gradient-primary);
+            background: var(--gradient-hero);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
             color: white; 
-            padding: 140px 24px 80px; 
-            margin-top: 90px;
+            padding: 160px 24px 100px; 
+            margin-top: 80px;
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -134,96 +188,132 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://images.unsplash.com/photo-1669003750682-93cf2c65b9ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920') center/cover;
-            opacity: 0.1;
+            background: url('https://images.unsplash.com/photo-1626470159480-427d823d3671?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920') center/cover;
+            opacity: 0.08;
             z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: pulse 4s ease-in-out infinite;
         }
         
         .hero-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            text-align: center;
         }
-        
+
         .hero-logo-container {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            animation: float 3s ease-in-out infinite;
         }
         
         .hero-logo { 
-            width: 180px; 
-            height: 180px; 
+            width: 200px; 
+            height: 200px; 
             background: white; 
-            border-radius: 16px; 
-            padding: 20px;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+            border-radius: 24px; 
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             object-fit: contain;
+            transition: all 0.3s ease;
         }
-        
-        .hero-title-group {
-            text-align: center;
+
+        .hero-logo:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
         }
         
         .hero-title-group h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         
         .hero-title-group p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.95;
-            font-weight: 500;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
         
         .hero-subtitle { 
-            font-size: 1.3rem; 
+            font-size: 1.4rem; 
             margin-bottom: 1rem; 
-            font-weight: 600;
+            font-weight: 700;
             opacity: 0.95;
-            text-align: center;
         }
         
         .hero-desc { 
-            font-size: 1.05rem; 
-            margin-bottom: 2.5rem; 
+            font-size: 1.1rem; 
+            margin-bottom: 3rem; 
             opacity: 0.9;
-            line-height: 1.7;
-            text-align: center;
+            line-height: 1.8;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .hero-buttons { 
             display: flex; 
-            gap: 1rem; 
+            gap: 1.5rem; 
             flex-wrap: wrap; 
             justify-content: center;
         }
         
         .btn { 
-            padding: 14px 32px; 
-            border-radius: 8px; 
+            padding: 16px 40px; 
+            border-radius: 12px; 
             text-decoration: none; 
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             display: inline-block;
             border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
         }
         
         .btn-primary { 
             background: white; 
-            color: var(--primary-blue);
+            color: var(--primary);
         }
         
         .btn-secondary { 
@@ -234,67 +324,70 @@
         
         .btn-secondary:hover {
             background: white;
-            color: var(--primary-blue);
+            color: var(--primary);
         }
-        
-        /* Sections */
+
+        /* Section Styles */
         section { 
-            padding: 80px 24px; 
+            padding: 100px 24px; 
         }
         
         .section-title { 
             text-align: center; 
-            font-size: 2.5rem; 
+            font-size: 3rem; 
             margin-bottom: 1rem; 
-            color: var(--primary-blue);
-            font-weight: 800;
-            letter-spacing: -1px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .section-subtitle { 
             text-align: center; 
-            font-size: 1.1rem; 
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
+            font-size: 1.2rem; 
+            color: var(--grey);
+            margin-bottom: 5rem;
             font-weight: 500;
         }
-        
+
         /* Gallery Section */
         .gallery-section {
-            background: var(--light-grey);
-            padding: 60px 24px;
+            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
         }
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
             margin-top: 3rem;
         }
         
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-            aspect-ratio: 4/3;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s ease;
+            aspect-ratio: 16/10;
         }
         
         .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-xl);
         }
         
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            transition: transform 0.6s ease;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.15);
         }
         
         .gallery-caption {
@@ -302,167 +395,213 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
             color: white;
-            padding: 1.5rem;
-            font-weight: 600;
-            font-size: 1rem;
+            padding: 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
         }
-        
-        /* About */
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* About Section */
         .about { 
             background: white;
         }
         
         .about-content {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         
         .about-logo-section {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         
         .about-logo {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             object-fit: contain;
             margin: 0 auto 2rem;
             background: white;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.4s ease;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .about-logo:hover {
+            transform: scale(1.1) rotate(5deg);
         }
         
         .about-text h3 { 
-            font-size: 1.8rem; 
-            margin-bottom: 1.5rem; 
-            color: var(--primary-blue);
-            font-weight: 700;
+            font-size: 2rem; 
+            margin-bottom: 2rem; 
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Space Grotesk', sans-serif;
         }
         
         .about-text p { 
-            margin-bottom: 1.5rem; 
-            color: var(--text-secondary);
-            line-height: 1.8; 
-            font-size: 1.05rem;
+            margin-bottom: 2rem; 
+            color: var(--grey);
+            line-height: 1.9; 
+            font-size: 1.1rem;
         }
         
         .features { 
-            margin-top: 3rem; 
+            margin-top: 4rem; 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 1.5rem; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
         }
         
         .feature { 
             display: flex; 
             align-items: center; 
-            gap: 1rem; 
-            background: var(--light-grey); 
-            padding: 1.5rem; 
-            border-radius: 12px; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: all 0.3s;
+            gap: 1.5rem; 
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            padding: 2rem; 
+            border-radius: 16px; 
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         
         .feature:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
         }
         
         .feature i { 
-            color: var(--secondary-blue);
-            font-size: 1.5rem;
-            min-width: 24px;
+            font-size: 2rem;
+            min-width: 40px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .feature span {
-            font-weight: 500;
-            color: var(--text-primary);
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.05rem;
         }
         
         .gst-info { 
-            margin-top: 3rem; 
-            padding: 2rem; 
-            background: var(--light-grey); 
-            border-left: 4px solid var(--secondary-blue);
-            border-radius: 8px; 
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            margin-top: 4rem; 
+            padding: 2.5rem; 
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 20px; 
+            box-shadow: var(--shadow-xl);
         }
         
         .gst-info p {
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.05rem;
         }
-        
-        /* Products */
+
+        /* Products Section */
         .products {
-            background: var(--light-grey);
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
         }
         
         .product-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
-            gap: 2rem; 
-            margin-top: 3rem; 
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+            gap: 2.5rem; 
+            margin-top: 4rem; 
         }
         
         .product-card { 
             background: white; 
-            border-radius: 12px; 
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            transition: all 0.3s;
-            border: 1px solid var(--border-color);
+            border-radius: 20px; 
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
             overflow: hidden;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
         }
         
         .product-card:hover { 
-            transform: translateY(-6px); 
-            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-            border-color: var(--secondary-blue);
+            transform: translateY(-12px); 
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
         }
         
         .product-image {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
-            border-bottom: 1px solid var(--border-color);
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
         }
         
         .product-content {
-            padding: 2rem;
+            padding: 2.5rem;
         }
         
         .product-icon { 
-            width: 64px; 
-            height: 64px; 
-            background: var(--gradient-primary);
-            border-radius: 12px; 
+            width: 70px; 
+            height: 70px; 
+            background: var(--gradient-1);
+            border-radius: 16px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
         }
         
         .product-icon i { 
-            font-size: 1.8rem; 
+            font-size: 2rem; 
             color: white; 
         }
         
         .product-card h3 { 
-            font-size: 1.4rem; 
+            font-size: 1.5rem; 
             margin-bottom: 1rem; 
-            color: var(--primary-blue);
-            font-weight: 700;
+            font-weight: 800;
+            color: var(--dark);
+            font-family: 'Space Grotesk', sans-serif;
         }
         
         .product-card p { 
-            color: var(--text-secondary);
+            color: var(--grey);
             margin-bottom: 1.5rem; 
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         .product-card ul { 
@@ -471,12 +610,18 @@
         }
         
         .product-card ul li { 
-            padding: 0.6rem 0; 
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--medium-grey);
+            padding: 0.8rem 0; 
+            color: var(--grey);
+            font-size: 0.95rem;
+            border-bottom: 1px solid #f1f5f9;
             display: flex;
             align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .product-card ul li:hover {
+            color: var(--primary);
+            padding-left: 8px;
         }
         
         .product-card ul li:last-child { 
@@ -485,104 +630,128 @@
         
         .product-card ul li:before { 
             content: "✓"; 
-            color: var(--success-green);
+            color: var(--accent);
             font-weight: bold; 
-            margin-right: 0.75rem;
-            font-size: 1.1rem;
+            margin-right: 1rem;
+            font-size: 1.2rem;
         }
-        
-        /* Contact */
+
+        /* Contact Section */
         .contact { 
-            background: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .contact .section-subtitle {
+            color: rgba(255,255,255,0.9);
         }
         
         .contact-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 2rem; 
-            margin-top: 3rem; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2.5rem; 
+            margin-top: 4rem; 
         }
         
         .info-card { 
-            background: var(--light-grey); 
-            padding: 2rem; 
-            border-radius: 12px; 
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2.5rem; 
+            border-radius: 20px; 
             text-align: center; 
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            transition: all 0.3s;
-            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         .info-card:hover { 
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-xl);
+            background: rgba(255, 255, 255, 0.25);
         }
         
         .info-card i { 
-            font-size: 2.5rem; 
-            color: var(--secondary-blue);
+            font-size: 3rem; 
+            color: white;
             margin-bottom: 1.5rem; 
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
         }
         
         .info-card h3 { 
-            font-size: 1.2rem; 
+            font-size: 1.3rem; 
             margin-bottom: 1rem; 
-            color: var(--primary-blue);
-            font-weight: 700;
+            color: white;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
         }
         
         .info-card p { 
-            color: var(--text-secondary);
-            font-size: 0.95rem; 
-            line-height: 1.7;
+            color: rgba(255,255,255,0.95);
+            font-size: 1rem; 
+            line-height: 1.8;
+            font-weight: 500;
         }
         
         .whatsapp-link { 
             color: #25D366; 
             text-decoration: none; 
-            font-weight: 600;
-            transition: opacity 0.3s;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 8px;
+            display: inline-block;
         }
         
         .whatsapp-link:hover { 
-            opacity: 0.8;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        
+
         /* Footer */
         footer { 
-            background: var(--dark-grey);
+            background: var(--dark);
             color: white; 
-            padding: 4rem 24px 2rem; 
+            padding: 5rem 24px 2rem; 
         }
         
         .footer-content { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 3rem; 
-            margin-bottom: 3rem; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 4rem; 
+            margin-bottom: 4rem; 
         }
         
         .footer-logo {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             object-fit: contain;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             background: white;
-            padding: 12px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
         }
         
         .footer-section h3 { 
             color: white;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            font-size: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
         }
         
         .footer-section p { 
             color: rgba(255,255,255,0.8);
-            margin-bottom: 0.75rem;
-            line-height: 1.7;
+            margin-bottom: 1rem;
+            line-height: 1.8;
         }
         
         .footer-section ul { 
@@ -590,14 +759,20 @@
         }
         
         .footer-section ul li { 
-            margin-bottom: 0.75rem; 
+            margin-bottom: 1rem; 
             color: rgba(255,255,255,0.8);
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li:hover {
+            color: white;
+            padding-left: 8px;
         }
         
         .footer-section a {
             color: rgba(255,255,255,0.8);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
         }
         
         .footer-section a:hover {
@@ -609,30 +784,48 @@
             padding-top: 2rem; 
             border-top: 1px solid rgba(255,255,255,0.1);
             color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
         }
-        
+
         /* Responsive */
         @media (max-width: 768px) { 
             .nav-menu { display: none; }
-            .hero-title-group h1 { font-size: 1.8rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            .section-title { font-size: 2rem; }
+            .hero-title-group h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2.2rem; }
             .product-grid { grid-template-columns: 1fr; }
-            .hero-logo-container { flex-direction: column; text-align: center; }
             .gallery-grid { grid-template-columns: 1fr; }
-            .hero-logo { width: 140px; height: 140px; }
-            .about-logo { width: 150px; height: 150px; }
+            .hero-logo { width: 160px; height: 160px; }
+            .about-logo { width: 180px; height: 180px; }
+            .hero { padding: 140px 24px 80px; }
+            section { padding: 60px 24px; }
+        }
+
+        /* Scroll Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <header>
+    <header id="header">
         <nav class="navbar">
             <div class="container">
                 <div class="logo-section">
                     <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="logo-img">
                     <div class="logo-text">
-                        <h1>BHAVYA STEEL INDUSTRIES</h1>
+                        <h1>BHAVYA STEEL</h1>
                         <p class="tagline">Premium Steel Solutions</p>
                     </div>
                 </div>
@@ -657,11 +850,11 @@
                     <h1>BHAVYA STEEL INDUSTRIES</h1>
                     <p>Round Bars | Square | Flat | Hexagon</p>
                 </div>
-                <p class="hero-subtitle">Stockist & Suppliers of Premium Alloy Steel & Mild Steel Products</p>
+                <p class="hero-subtitle">🚀 Premium Alloy Steel & Mild Steel Stockist</p>
                 <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products, bright bars, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">Explore Products</a>
-                    <a href="#contact" class="btn btn-secondary">Request Quote</a>
+                    <a href="#contact" class="btn btn-secondary">Get Quote</a>
                 </div>
             </div>
         </div>
@@ -670,31 +863,31 @@
     <section id="gallery" class="gallery-section">
         <div class="container">
             <h2 class="section-title">Our Products Gallery</h2>
-            <p class="section-subtitle">High-Quality Steel Products for Every Industrial Need</p>
+            <p class="section-subtitle">High-Quality Steel Products for Every Industrial Need 🏭</p>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1763926025678-95d196d0ab28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Steel Bars Industrial">
-                    <div class="gallery-caption">Premium Steel Bars</div>
+                    <img src="https://images.unsplash.com/photo-1763926062529-1edf8664c366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Steel Bars Industrial">
+                    <div class="gallery-caption">✨ Premium Steel Bars</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1759922378219-1d31edb644f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Metal Rods Construction">
-                    <div class="gallery-caption">Construction Grade Rods</div>
+                    <img src="https://images.unsplash.com/photo-1763926025477-423847028860?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Metal Rods Construction">
+                    <div class="gallery-caption">🏗️ Construction Grade Rods</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1669003750682-93cf2c65b9ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Steel Warehouse">
-                    <div class="gallery-caption">Our Warehouse Facility</div>
+                    <img src="https://images.unsplash.com/photo-1626470159480-427d823d3671?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Steel Factory">
+                    <div class="gallery-caption">🏭 Manufacturing Excellence</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1764115424769-ebdd2683d5a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Manufacturing">
-                    <div class="gallery-caption">Manufacturing Excellence</div>
+                    <img src="https://images.unsplash.com/photo-1673201159848-a0908cff3ccf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Warehouse">
+                    <div class="gallery-caption">📦 Our Warehouse Facility</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1763771421047-7363eeece6f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Steel Materials">
-                    <div class="gallery-caption">Quality Steel Materials</div>
+                    <img src="https://images.unsplash.com/photo-1763771420746-c75fefab51b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Steel Materials">
+                    <div class="gallery-caption">💎 Quality Steel Materials</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1614792403436-ba5b3e747604?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Industrial Tools">
-                    <div class="gallery-caption">Industrial Tools & Hardware</div>
+                    <img src="https://images.unsplash.com/photo-1763926026024-2b294669e255?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Industrial Products">
+                    <div class="gallery-caption">🔧 Industrial Products</div>
                 </div>
             </div>
         </div>
@@ -703,7 +896,7 @@
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">About Us</h2>
-            <p class="section-subtitle">Your Trusted Partner in Steel Supply</p>
+            <p class="section-subtitle">Your Trusted Partner in Steel Supply 🤝</p>
             <div class="about-content">
                 <div class="about-logo-section">
                     <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="Bhavya Steel Industries Logo" class="about-logo">
@@ -741,8 +934,8 @@
                     </div>
                 </div>
                 <div class="gst-info">
-                    <p><strong>GST Number:</strong> 24AWIPK1900F1Z1</p>
-                    <p><strong>Location:</strong> Plot No: 335/B, Chamunda Chawl, Below Satguru Swami Teooramji Maharaj Overbridge, Near Railway Crossing, Naroda, NH-8, Ahmedabad, Gujarat</p>
+                    <p><strong>📋 GST Number:</strong> 24AWIPK1900F1Z1</p>
+                    <p><strong>📍 Location:</strong> Plot No: 335/B, Chamunda Chawl, Below Satguru Swami Teooramji Maharaj Overbridge, Near Railway Crossing, Naroda, NH-8, Ahmedabad, Gujarat</p>
                 </div>
             </div>
         </div>
@@ -751,10 +944,9 @@
     <section id="products" class="products">
         <div class="container">
             <h2 class="section-title">Our Products</h2>
-            <p class="section-subtitle">Premium Quality Steel Products for Every Industrial Need</p>
+            <p class="section-subtitle">Premium Quality Steel Products for Every Industrial Need 🔩</p>
             <div class="product-grid">
                 
-                <!-- Alloy Steel Round Bars -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1763926025678-95d196d0ab28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Alloy Steel Round Bars" class="product-image">
                     <div class="product-content">
@@ -770,13 +962,10 @@
                             <li>D2 - High carbon, high chromium</li>
                             <li>D3 - Tool steel grade</li>
                             <li>F11 - Chromium-molybdenum alloy</li>
-                            <li>Polished & bright finish available</li>
-                            <li>Custom sizes & diameters</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Alloy Steel Flat Bars -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1763926025477-423847028860?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Alloy Steel Flat Bars" class="product-image">
                     <div class="product-content">
@@ -790,13 +979,10 @@
                             <li>EN19 Alloy Steel Flats</li>
                             <li>Various widths & thickness</li>
                             <li>Hot rolled & cold rolled options</li>
-                            <li>Precision cut to size</li>
-                            <li>Superior surface finish</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Mild Steel Round Bars -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1759922378219-1d31edb644f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Mild Steel Round Bars" class="product-image">
                     <div class="product-content">
@@ -810,12 +996,10 @@
                             <li>Diameters: 6mm to 100mm</li>
                             <li>Hot rolled & cold drawn</li>
                             <li>Bright bars available</li>
-                            <li>Custom length cutting</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Mild Steel Flat Bars -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1763926026024-2b294669e255?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Mild Steel Flat Bars" class="product-image">
                     <div class="product-content">
@@ -828,12 +1012,10 @@
                             <li>Thickness: 3mm to 50mm</li>
                             <li>Hot rolled finish</li>
                             <li>Custom cutting available</li>
-                            <li>Suitable for welding & machining</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Square Bars -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1763926025680-7966e45e48f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Square Bars" class="product-image">
                     <div class="product-content">
@@ -846,12 +1028,10 @@
                             <li>Sizes: 10mm to 100mm</li>
                             <li>Bright finish available</li>
                             <li>High dimensional accuracy</li>
-                            <li>Custom dimensions</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Hexagon Bars -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1759771611523-0cc0366b8333?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Hexagon Bars" class="product-image">
                     <div class="product-content">
@@ -864,12 +1044,10 @@
                             <li>Bright finish available</li>
                             <li>Sizes: 10mm to 75mm</li>
                             <li>Excellent dimensional tolerance</li>
-                            <li>Suitable for CNC machining</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- MS Bright Bars -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1763771420746-c75fefab51b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="MS Bright Bars" class="product-image">
                     <div class="product-content">
@@ -882,13 +1060,10 @@
                             <li>Flat bright bars</li>
                             <li>Hexagon bright bars</li>
                             <li>Polished smooth finish</li>
-                            <li>High dimensional precision</li>
-                            <li>Ready for machining</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Metal Strips -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1763926062529-1edf8664c366?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Metal Strips" class="product-image">
                     <div class="product-content">
@@ -901,13 +1076,10 @@
                             <li>MS metal strips</li>
                             <li>Alloy steel strips</li>
                             <li>Various widths & thickness</li>
-                            <li>Custom cutting service</li>
-                            <li>Cold rolled finish</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Stainless Steel Plates -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1669003749719-6b1c7bbed876?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Stainless Steel Plates" class="product-image">
                     <div class="product-content">
@@ -920,12 +1092,10 @@
                             <li>Various thickness available</li>
                             <li>2B, BA, No.4 finish</li>
                             <li>Custom cutting service</li>
-                            <li>Corrosion & heat resistant</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Tools & Hardware -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1614792403436-ba5b3e747604?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Tools & Hardware" class="product-image">
                     <div class="product-content">
@@ -938,13 +1108,10 @@
                             <li>Industrial hardware</li>
                             <li>Fasteners, bolts & nuts</li>
                             <li>Welding accessories</li>
-                            <li>Safety equipment</li>
-                            <li>Measuring instruments</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- U-Shaped Alloy Products -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1669003749583-4f8bcdf538d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="U-Shaped Alloy Products" class="product-image">
                     <div class="product-content">
@@ -956,12 +1123,10 @@
                             <li>Custom profiles available</li>
                             <li>Various sizes & dimensions</li>
                             <li>Suitable for structural use</li>
-                            <li>High strength applications</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Custom Steel Solutions -->
                 <div class="product-card">
                     <img src="https://images.unsplash.com/photo-1764115424769-ebdd2683d5a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800" alt="Custom Steel Solutions" class="product-image">
                     <div class="product-content">
@@ -974,8 +1139,6 @@
                             <li>Heat treatment services</li>
                             <li>Quality testing & certification</li>
                             <li>Technical consultation</li>
-                            <li>Bulk order discounts</li>
-                            <li>Material sourcing assistance</li>
                         </ul>
                     </div>
                 </div>
@@ -987,7 +1150,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
-            <p class="section-subtitle">Get in touch for quotes, inquiries, and expert consultation</p>
+            <p class="section-subtitle">Get in touch for quotes, inquiries, and expert consultation 📞</p>
             <div class="contact-grid">
                 <div class="info-card">
                     <i class="fas fa-map-marker-alt"></i>
@@ -1003,12 +1166,12 @@
                 <div class="info-card">
                     <i class="fas fa-envelope"></i>
                     <h3>Email Address</h3>
-                    <p><a href="mailto:bhavyasteelindustries20@gmail.com" style="color: var(--secondary-blue); text-decoration: none; font-weight: 600;">bhavyasteelindustries20@gmail.com</a></p>
+                    <p><a href="mailto:bhavyasteelindustries20@gmail.com" style="color: white; text-decoration: none; font-weight: 700;">bhavyasteelindustries20@gmail.com</a></p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-id-card"></i>
                     <h3>GST Number</h3>
-                    <p style="font-weight: 600; color: var(--primary-blue);">24AWIPK1900F1Z1</p>
+                    <p style="font-weight: 700; font-size: 1.1rem;">24AWIPK1900F1Z1</p>
                 </div>
             </div>
         </div>
@@ -1052,13 +1215,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Bhavya Steel Industries. All rights reserved. | Designed for Excellence in Steel Supply</p>
+                <p>&copy; 2024 Bhavya Steel Industries. All rights reserved. | Designed with 💜 for Excellence in Steel Supply</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1069,19 +1232,32 @@
             });
         });
 
-        // Add scroll effect to header
-        let lastScroll = 0;
+        // Header scroll effect
+        const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
             } else {
-                header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+                header.classList.remove('scrolled');
             }
-            
-            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .gallery-item, .feature, .info-card').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
