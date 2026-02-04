@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bhavya Steel Industries | Premium Alloy & Mild Steel Stockist | Naroda, Ahmedabad</title>
-    <meta name="description" content="Leading stockist and supplier of Alloy Steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), Mild Steel, Bright Bars, and Industrial Hardware in Naroda, Ahmedabad, Gujarat">
+    <meta name="description" content="Leading stockist and supplier of Alloy Steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), Mild Steel, Bright Bars, C45 Plates, MS Plates, and Industrial Hardware in Naroda, Ahmedabad, Gujarat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1e3a8a;
             --primary-light: #3b82f6;
+            --primary-dark: #1e40af;
             --secondary: #0f172a;
             --accent: #f59e0b;
+            --accent-light: #fbbf24;
             --success: #10b981;
+            --error: #ef4444;
             --dark: #0f172a;
             --dark-light: #1e293b;
             --grey: #64748b;
@@ -25,6 +28,9 @@
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
             --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
             --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
         
         * { 
@@ -49,7 +55,8 @@
 
         /* Header */
         header { 
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             padding: 1rem 0; 
             position: fixed; 
@@ -63,6 +70,7 @@
         header.scrolled {
             padding: 0.75rem 0;
             box-shadow: var(--shadow-md);
+            background: rgba(255, 255, 255, 0.98);
         }
         
         .navbar .container { 
@@ -85,12 +93,21 @@
             padding: 4px;
             border-radius: 8px;
             border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
         }
         
         .logo-text h1 { 
             font-size: 1.3rem; 
             font-weight: 800;
-            color: var(--primary);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -0.5px;
             font-family: 'Poppins', sans-serif;
         }
@@ -117,6 +134,7 @@
             transition: all 0.3s ease;
             padding: 8px 0;
             border-bottom: 2px solid transparent;
+            position: relative;
         }
         
         .nav-menu a:hover { 
@@ -124,9 +142,22 @@
             border-bottom-color: var(--primary);
         }
 
+        .nav-menu a.cta-btn {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            border-bottom: none;
+        }
+
+        .nav-menu a.cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
         /* Hero Section */
         .hero { 
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--gradient-primary);
             color: white; 
             padding: 140px 24px 80px; 
             margin-top: 73px;
@@ -142,8 +173,19 @@
             right: 0;
             bottom: 0;
             background: url('https://5.imimg.com/data5/SELLER/Default/2023/12/366686362/XE/ZC/QZ/63421244/carbon-alloy-steel-round-bars.jpg') center/cover;
-            opacity: 0.05;
+            opacity: 0.08;
             z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
         
         .hero-content {
@@ -164,10 +206,16 @@
             width: 160px; 
             height: 160px; 
             background: white; 
-            border-radius: 16px; 
+            border-radius: 20px; 
             padding: 20px;
             box-shadow: var(--shadow-xl);
             object-fit: contain;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
         
         .hero-title-group h1 {
@@ -176,6 +224,7 @@
             letter-spacing: -1.5px;
             margin-bottom: 1rem;
             font-family: 'Poppins', sans-serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .hero-title-group p {
@@ -211,7 +260,7 @@
         
         .btn { 
             padding: 14px 36px; 
-            border-radius: 8px; 
+            border-radius: 12px; 
             text-decoration: none; 
             font-weight: 700;
             font-size: 0.95rem;
@@ -220,6 +269,7 @@
             border: 2px solid transparent;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif;
         }
         
         .btn:hover { 
@@ -228,23 +278,25 @@
         }
         
         .btn-primary { 
-            background: var(--accent); 
+            background: var(--gradient-accent);
             color: white;
         }
 
         .btn-primary:hover {
-            background: #d97706;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
         }
         
         .btn-secondary { 
-            background: transparent; 
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
             color: white; 
-            border: 2px solid white;
+            border: 2px solid rgba(255,255,255,0.3);
         }
         
         .btn-secondary:hover {
             background: white;
             color: var(--primary);
+            border-color: white;
         }
 
         /* Trust Bar */
@@ -264,11 +316,19 @@
 
         .trust-item {
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-4px);
         }
 
         .trust-item i {
             font-size: 2rem;
-            color: var(--primary);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.5rem;
         }
 
@@ -296,7 +356,10 @@
             font-weight: 900;
             letter-spacing: -1px;
             font-family: 'Poppins', sans-serif;
-            color: var(--dark);
+            background: var(--gradient-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .section-subtitle { 
@@ -321,16 +384,33 @@
         
         .product-card { 
             background: white; 
-            border-radius: 12px; 
+            border-radius: 16px; 
             box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--border);
             overflow: hidden;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
         
         .product-card:hover { 
             transform: translateY(-8px); 
             box-shadow: var(--shadow-xl);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
         }
         
         .product-image-wrapper {
@@ -342,17 +422,28 @@
             align-items: center;
             justify-content: center;
             border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .product-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.05) 100%);
         }
 
         .product-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .product-card:hover .product-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .product-content {
@@ -361,10 +452,10 @@
         
         .product-badge {
             display: inline-block;
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: white;
             padding: 4px 12px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -373,11 +464,15 @@
         }
 
         .product-badge.bright {
-            background: var(--accent);
+            background: var(--gradient-accent);
         }
 
         .product-badge.mild-steel {
-            background: var(--grey);
+            background: var(--gradient-dark);
+        }
+
+        .product-badge.plate {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
         }
         
         .product-card h3 { 
@@ -398,8 +493,9 @@
         .product-specs {
             background: var(--light);
             padding: 1.25rem;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 1.25rem;
+            border: 1px solid var(--border);
         }
 
         .product-specs h4 {
@@ -439,10 +535,10 @@
 
         .product-cta {
             display: inline-block;
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: white;
             padding: 10px 24px;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
             font-size: 0.9rem;
@@ -450,8 +546,8 @@
         }
 
         .product-cta:hover {
-            background: var(--primary-light);
             transform: translateX(4px);
+            box-shadow: var(--shadow-md);
         }
 
         /* About Section */
@@ -476,16 +572,25 @@
             margin: 0 auto 1.5rem;
             background: white;
             padding: 20px;
-            border-radius: 16px;
+            border-radius: 20px;
             box-shadow: var(--shadow-lg);
             border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .about-logo:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
         }
         
         .about-text h3 { 
             font-size: 1.8rem; 
             margin-bottom: 1.5rem; 
             font-weight: 800;
-            color: var(--primary);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-family: 'Poppins', sans-serif;
         }
         
@@ -509,7 +614,7 @@
             gap: 1rem; 
             background: white;
             padding: 1.5rem; 
-            border-radius: 10px; 
+            border-radius: 12px; 
             box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
             border: 1px solid var(--border);
@@ -518,12 +623,16 @@
         .feature:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-md);
+            border-color: var(--primary);
         }
         
         .feature i { 
             font-size: 1.75rem;
             min-width: 35px;
-            color: var(--primary);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .feature span {
@@ -535,9 +644,9 @@
         .gst-info { 
             margin-top: 3rem; 
             padding: 2rem; 
-            background: var(--primary);
+            background: var(--gradient-dark);
             color: white;
-            border-radius: 12px; 
+            border-radius: 16px; 
             box-shadow: var(--shadow-lg);
         }
         
@@ -566,7 +675,7 @@
         .info-card { 
             background: var(--light);
             padding: 2rem; 
-            border-radius: 12px; 
+            border-radius: 16px; 
             text-align: center; 
             box-shadow: var(--shadow-sm);
             transition: all 0.3s ease;
@@ -576,11 +685,15 @@
         .info-card:hover { 
             transform: translateY(-6px);
             box-shadow: var(--shadow-md);
+            border-color: var(--primary);
         }
         
         .info-card i { 
             font-size: 2.5rem; 
-            color: var(--primary);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem; 
         }
         
@@ -612,7 +725,7 @@
 
         /* Footer */
         footer { 
-            background: var(--dark);
+            background: var(--gradient-dark);
             color: white; 
             padding: 4rem 24px 2rem; 
         }
@@ -707,6 +820,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#products">Products</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="quote-request.html" class="cta-btn">Get Quote</a></li>
                 </ul>
             </div>
         </nav>
@@ -720,13 +834,13 @@
                 </div>
                 <div class="hero-title-group">
                     <h1>BHAVYA STEEL INDUSTRIES</h1>
-                    <p>Round Bars | Square | Flat | Hexagon</p>
+                    <p>Round Bars | Square | Flat | Hexagon | Plates</p>
                 </div>
                 <p class="hero-subtitle">Premium Alloy Steel & Mild Steel Stockist</p>
-                <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products, bright bars, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
+                <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products, bright bars, C45 plates, MS plates, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">View Products</a>
-                    <a href="#contact" class="btn btn-secondary">Get Quote</a>
+                    <a href="quote-request.html" class="btn btn-secondary">Request Quote</a>
                 </div>
             </div>
         </div>
@@ -781,7 +895,7 @@
                                 <li>Application: Shafts, Axles, Gears</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -803,7 +917,7 @@
                                 <li>Application: Bearings, Dies</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -825,7 +939,7 @@
                                 <li>Application: Gears, Shafts</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -847,7 +961,7 @@
                                 <li>Application: Dies, Punches</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -869,7 +983,7 @@
                                 <li>Application: General Engineering</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -891,7 +1005,7 @@
                                 <li>Application: Construction, Fabrication</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -913,7 +1027,7 @@
                                 <li>Application: Structural Work</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -935,7 +1049,7 @@
                                 <li>Application: CNC Components, Shafts</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -957,7 +1071,7 @@
                                 <li>Application: Precision Parts, Tooling</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -979,7 +1093,7 @@
                                 <li>Application: Fasteners, Precision Parts</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -1001,7 +1115,51 @@
                                 <li>Application: Bolts, Nuts, Fasteners</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
+                    </div>
+                </div>
+
+                <!-- C45 Plates -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/FW/NL/IO/SELLER-2356369/c-45-steel-plate-500x500.jpg" alt="C45 Carbon Steel Plate" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge plate">Steel Plate</span>
+                        <h3>C45 Plates</h3>
+                        <p>Medium carbon steel plates with excellent machinability and strength for industrial applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: C45 (1.0503)</li>
+                                <li>Thickness: 6mm to 100mm</li>
+                                <li>Size: Custom Cut Available</li>
+                                <li>Application: Machine Parts, Tooling</li>
+                            </ul>
+                        </div>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
+                    </div>
+                </div>
+
+                <!-- MS Plates -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/334121167/BL/UD/IQ/4034515/mild-steel-plates.jpg" alt="Mild Steel Plate" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge plate">Steel Plate</span>
+                        <h3>MS Plates</h3>
+                        <p>Hot rolled mild steel plates for structural, fabrication, and general engineering applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: IS 2062 (Fe 410/250)</li>
+                                <li>Thickness: 3mm to 100mm</li>
+                                <li>Size: Standard & Custom</li>
+                                <li>Application: Construction, Fabrication</li>
+                            </ul>
+                        </div>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -1023,7 +1181,7 @@
                                 <li>Application: Structural, Fabrication</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -1045,29 +1203,7 @@
                                 <li>Application: Machine Parts</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
-                    </div>
-                </div>
-
-                <!-- EN24 Hexagon Bars -->
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/BT/RB/QT/63421244/en-24-ms-hexagonal-bar-500x500.jpg" alt="EN24 Hexagonal Bar" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <span class="product-badge">Alloy Steel</span>
-                        <h3>EN24 Hexagon Bars</h3>
-                        <p>Nickel chromium molybdenum steel with excellent hardenability.</p>
-                        <div class="product-specs">
-                            <h4>Specifications</h4>
-                            <ul>
-                                <li>Grade: EN24 (SAE 4140)</li>
-                                <li>Size: 10mm to 75mm AF</li>
-                                <li>Finish: Hot Rolled/Bright</li>
-                                <li>Application: Bolts, Fasteners</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -1089,29 +1225,7 @@
                                 <li>Application: Shafts, Pins</li>
                             </ul>
                         </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
-                    </div>
-                </div>
-
-                <!-- EN31 Hexagon Bars -->
-                <div class="product-card">
-                    <div class="product-image-wrapper">
-                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/VL/SG/FH/63421244/en-31-ms-hexagonal-bar-250x250.jpg" alt="EN31 Hexagonal Bar" class="product-image">
-                    </div>
-                    <div class="product-content">
-                        <span class="product-badge">Alloy Steel</span>
-                        <h3>EN31 Hexagon Bars</h3>
-                        <p>Bearing quality steel hexagons with high wear resistance.</p>
-                        <div class="product-specs">
-                            <h4>Specifications</h4>
-                            <ul>
-                                <li>Grade: EN31 (100Cr6)</li>
-                                <li>Size: 10mm to 65mm AF</li>
-                                <li>Finish: Bright/Polished</li>
-                                <li>Application: Precision Parts</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="product-cta">Request Quote →</a>
+                        <a href="quote-request.html" class="product-cta">Request Quote →</a>
                     </div>
                 </div>
 
@@ -1130,7 +1244,7 @@
                 <div class="about-text">
                     <h3>Excellence in Steel Distribution</h3>
                     <p>Bhavya Steel Industries is a premier stockist and supplier of high-quality alloy steel and mild steel products based in Naroda, Ahmedabad. With a commitment to excellence and customer satisfaction, we serve diverse industries including construction, manufacturing, automotive, and engineering sectors across Gujarat.</p>
-                    <p>Our extensive inventory includes premium alloy steel grades (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products in various forms (round bars, square bars, flat bars, hexagon bars), bright bars with superior finish, metal strips, stainless steel plates, and a comprehensive range of industrial tools and hardware.</p>
+                    <p>Our extensive inventory includes premium alloy steel grades (EN19, EN24, EN31, EN8, EN9, SAE 4140, D2, D3, F11), mild steel products in various forms (round bars, square bars, flat bars, hexagon bars), bright bars with superior finish, C45 plates, MS plates, metal strips, stainless steel plates, and a comprehensive range of industrial tools and hardware.</p>
                     <p>Strategically located near NH-8 in Naroda, we ensure timely delivery and competitive pricing while maintaining the highest quality standards. Our experienced team provides expert technical support to help you select the right materials for your specific applications.</p>
                 </div>
                 <div class="features">
@@ -1203,7 +1317,7 @@
                 <div class="footer-section">
                     <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="footer-logo">
                     <h3>Bhavya Steel Industries</h3>
-                    <p>Leading stockist and supplier of premium alloy steel, mild steel, bright bars, and industrial hardware in Naroda, Ahmedabad.</p>
+                    <p>Leading stockist and supplier of premium alloy steel, mild steel, bright bars, steel plates, and industrial hardware in Naroda, Ahmedabad.</p>
                     <p style="margin-top: 1rem;"><strong>GST:</strong> 24AWIPK1900F1Z1</p>
                 </div>
                 <div class="footer-section">
@@ -1213,6 +1327,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <li><a href="quote-request.html">Request Quote</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1221,7 +1336,7 @@
                         <li>Alloy Steel (EN19, EN24, EN31, EN8, EN9)</li>
                         <li>Mild Steel Products</li>
                         <li>Bright Bars & Polished Bars</li>
-                        <li>Stainless Steel Plates</li>
+                        <li>Steel Plates (C45, MS)</li>
                         <li>Tools & Hardware</li>
                     </ul>
                 </div>
