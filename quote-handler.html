@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quote Request Handler - Bhavya Steel Industries</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        // This page handles quote form submissions and sends emails via Gmail
+        // It will be called by the quote form via AJAX
+        
+        async function handleQuoteSubmission(formData) {
+            try {
+                // Extract form data
+                const data = {
+                    name: formData.get('name'),
+                    company: formData.get('company') || 'Not provided',
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    category: formData.get('category'),
+                    quantity: formData.get('quantity') || 'Not specified',
+                    products: formData.getAll('products[]').join(', ') || 'Not selected',
+                    specifications: formData.get('specifications'),
+                    location: formData.get('location'),
+                    required_date: formData.get('required_date') || 'Not specified',
+                    notes: formData.get('notes') || 'None',
+                    timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+                    reference: 'BSI-' + Date.now()
+                };
+
+                // Email to business (bhavyasteelindustries20@gmail.com) and CC to personal (kapasiraj84@gmail.com)
+                const businessEmail = {
+                    to: 'bhavyasteelindustries20@gmail.com',
+                    cc: 'kapasiraj84@gmail.com',
+                    subject: `🔔 New Quote Request from ${data.name} - ${data.reference}`,
+                    body: `
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+        .content { background: #f8fafc; padding: 30px; border: 1px solid #e2e8f0; }
+        .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; border-left: 4px solid #1e3a8a; }
+        .section-title { font-size: 16px; font-weight: bold; color: #1e3a8a; margin-bottom: 15px; text-transform: uppercase; }
+        .field { margin-bottom: 12px; }
+        .label { font-weight: 600; color: #64748b; font-size: 13px; text-transform: uppercase; }
+        .value { color: #0f172a; font-size: 15px; margin-top: 4px; }
+        .highlight { background: #fef3c7; padding: 15px; border-radius: 6px; border-left: 4px solid #f59e0b; margin: 20px 0; }
+        .footer { text-align: center; padding: 20px; color: #64748b; font-size: 13px; }
+        .btn { display: inline-block; background: #1e3a8a; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin: 10px 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="margin: 0; font-size: 24px;">📋 NEW QUOTE REQUEST</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">Bhavya Steel Industries</p>
+        </div>
+        
+        <div class="content">
+            <div class="highlight">
+                <strong>Reference Number:</strong> ${data.reference}<br>
+                <strong>Received:</strong> ${data.timestamp}
+            </div>
+
+            <div class="section">
+                <div class="section-title">👤 Customer Information</div>
+                <div class="field">
+                    <div class="label">Full Name</div>
+                    <div class="value">${data.name}</div>
+                </div>
+                <div class="field">
+                    <div class="label">Company</div>
+                    <div class="value">${data.company}</div>
+                </div>
+                <div class="field">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:${data.email}">${data.email}</a></div>
+                </div>
+                <div class="field">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:${data.phone}">${data.phone}</a> | <a href="https://wa.me/${data.phone.replace(/[^0-9]/g, '')}" target="_blank">WhatsApp</a></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🏭 Product Requirements</div>
+                <div class="field">
+                    <div class="label">Category</div>
+                    <div class="value">${data.category}</div>
+                </div>
+                <div class="field">
+                    <div class="label">Quantity</div>
+                    <div class="value">${data.quantity}</div>
+                </div>
+                <div class="field">
+                    <div class="label">Specific Products</div>
+                    <div class="value">${data.products}</div>
+                </div>
+                <div class="field">
+                    <div class="label">Detailed Specifications</div>
+                    <div class="value" style="white-space: pre-wrap;">${data.specifications}</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">🚚 Delivery Information</div>
+                <div class="field">
+                    <div class="label">Delivery Location</div>
+                    <div class="value">${data.location}</div>
+                </div>
+                <div class="field">
+                    <div class="label">Required By Date</div>
+                    <div class="value">${data.required_date}</div>
+                </div>
+                <div class="field">
+                    <div class="label">Additional Notes</div>
+                    <div class="value" style="white-space: pre-wrap;">${data.notes}</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="mailto:${data.email}?subject=Re: Quote Request ${data.reference} - Bhavya Steel Industries" class="btn">📧 Reply to Customer</a>
+                <a href="https://wa.me/${data.phone.replace(/[^0-9]/g, '')}" class="btn" target="_blank">💬 WhatsApp</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Bhavya Steel Industries</strong><br>
+            Plot No: 335/B, Chamunda Chawl, Naroda, NH-8, Ahmedabad<br>
+            GST: 24AWIPK1900F1Z1</p>
+        </div>
+    </div>
+</body>
+</html>
+                    `
+                };
+
+                // Confirmation email to customer
+                const customerEmail = {
+                    to: data.email,
+                    subject: `Quote Request Received - ${data.reference} | Bhavya Steel Industries`,
+                    body: `
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+        .content { background: #f8fafc; padding: 30px; border: 1px solid #e2e8f0; }
+        .success-box { background: #d1fae5; border-left: 4px solid #10b981; padding: 20px; border-radius: 6px; margin: 20px 0; }
+        .details { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .contact-box { background: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; }
+        .footer { text-align: center; padding: 20px; color: #64748b; font-size: 13px; border-top: 1px solid #e2e8f0; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="margin: 0; font-size: 24px;">✅ Quote Request Received!</h1>
+            <p style="margin: 10px 0 0 0; opacity: 0.9;">Bhavya Steel Industries</p>
+        </div>
+        
+        <div class="content">
+            <div class="success-box">
+                <h2 style="margin: 0 0 10px 0; color: #059669;">Thank You, ${data.name}!</h2>
+                <p style="margin: 0;">We have successfully received your quote request and our team will review your requirements shortly.</p>
+            </div>
+
+            <div class="details">
+                <h3 style="color: #1e3a8a; margin-top: 0;">Your Request Details:</h3>
+                <p><strong>Reference Number:</strong> ${data.reference}</p>
+                <p><strong>Product Category:</strong> ${data.category}</p>
+                <p><strong>Quantity:</strong> ${data.quantity}</p>
+                <p><strong>Delivery Location:</strong> ${data.location}</p>
+                <p><strong>Submitted:</strong> ${data.timestamp}</p>
+            </div>
+
+            <div class="contact-box">
+                <h3 style="color: #f59e0b; margin-top: 0;">⏱️ What Happens Next?</h3>
+                <p style="margin: 10px 0;">Our team will review your requirements and send you a detailed quote within <strong>24 hours</strong>.</p>
+                <p style="margin: 10px 0;">For urgent inquiries, feel free to contact us directly:</p>
+                <p style="margin: 15px 0;">
+                    <strong>📱 Gautam Kapasi:</strong> <a href="https://wa.me/919409420760">+91 9409420760</a><br>
+                    <strong>📱 Raj Kapasi:</strong> <a href="https://wa.me/919327703647">+91 9327703647</a><br>
+                    <strong>📧 Email:</strong> <a href="mailto:bhavyasteelindustries20@gmail.com">bhavyasteelindustries20@gmail.com</a>
+                </p>
+            </div>
+
+            <p style="text-align: center; color: #64748b; font-size: 14px;">
+                Please save this email for your reference. You can reply directly to this email if you have any questions.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p><strong>Bhavya Steel Industries</strong><br>
+            Premium Alloy Steel & Mild Steel Stockist<br>
+            Plot No: 335/B, Chamunda Chawl, Naroda, NH-8, Ahmedabad, Gujarat<br>
+            GST: 24AWIPK1900F1Z1<br>
+            <a href="https://kapasiraj84-beep.github.io/bhavya-steel-industries/">Visit Our Website</a></p>
+        </div>
+    </div>
+</body>
+</html>
+                    `
+                };
+
+                return { success: true, businessEmail, customerEmail, data };
+            } catch (error) {
+                console.error('Error handling quote:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // Export for use in other scripts
+        if (typeof module !== 'undefined' && module.exports) {
+            module.exports = { handleQuoteSubmission };
+        }
+    </script>
+</body>
+</html>
