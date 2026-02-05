@@ -23,6 +23,7 @@
             --text-muted: #9CA3AF;           /* Muted Gray - Subtle Text */
             --border-color: #374151;         /* Dark Border */
             --hover-bg: #374151;             /* Hover State */
+            --list-check-color: #10B981;     /* Green Check - Original UL Color */
         }
 
         body {
@@ -162,6 +163,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card::before {
@@ -233,6 +236,7 @@
         .specs-list {
             list-style: none;
             margin-top: 1.5rem;
+            flex-grow: 1;
         }
 
         .specs-list li {
@@ -250,9 +254,41 @@
 
         .specs-list li::before {
             content: '✓';
-            color: var(--accent-color);
+            color: var(--list-check-color);
             font-weight: bold;
             font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Get Quote Button - Unified Design */
+        .quote-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem 2rem;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-color), #B45309);
+            color: var(--primary-bg);
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+        }
+
+        .quote-btn:hover {
+            background: linear-gradient(135deg, #B45309, var(--accent-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(217, 119, 6, 0.5);
+        }
+
+        .quote-btn:active {
+            transform: translateY(0);
         }
 
         /* Certifications Section */
@@ -428,10 +464,12 @@
                 <p>High-performance alloy steel engineered for superior strength, durability, and resistance to extreme conditions.</p>
                 <ul class="specs-list">
                     <li>EN Series: EN8, EN9, EN19, EN24, EN31, EN47</li>
+                    <li>Round sizes: 20mm to 300mm diameter</li>
                     <li>High tensile strength and wear resistance</li>
                     <li>Precision machined to exact specifications</li>
                     <li>Ideal for automotive and heavy machinery</li>
                 </ul>
+                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
             </div>
 
             <div class="product-card">
@@ -442,8 +480,10 @@
                     <li>Mirror-finish surface quality</li>
                     <li>Tight dimensional tolerances</li>
                     <li>Available in round, square, and hexagonal</li>
+                    <li>Sizes from 6mm to 150mm</li>
                     <li>Perfect for CNC machining operations</li>
                 </ul>
+                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
             </div>
 
             <div class="product-card">
@@ -452,10 +492,12 @@
                 <p>Versatile mild steel products offering excellent weldability and formability for diverse industrial applications.</p>
                 <ul class="specs-list">
                     <li>High-grade carbon steel composition</li>
+                    <li>Round sizes: 20mm to 250mm diameter</li>
                     <li>Excellent machinability and weldability</li>
                     <li>Cost-effective for structural applications</li>
                     <li>Available in various grades and sizes</li>
                 </ul>
+                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
             </div>
 
             <div class="product-card">
@@ -467,7 +509,9 @@
                     <li>Hot rolled and cold rolled options</li>
                     <li>Certified for pressure vessel applications</li>
                     <li>Custom cutting and fabrication available</li>
+                    <li>Wide range of grades and specifications</li>
                 </ul>
+                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
             </div>
         </div>
 
