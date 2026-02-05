@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhavya Steel Industries - Premium Steel Manufacturing</title>
+    <title>Bhavya Steel Industries - Premium Steel Products</title>
     <style>
         * {
             margin: 0;
@@ -11,423 +11,193 @@
             box-sizing: border-box;
         }
 
-        :root {
-            /* Professional Industrial Color Palette */
-            --primary-bg: #111827;           /* Deep Charcoal - Main Background */
-            --secondary-bg: #1F2937;         /* Iron Gray - Cards/Surfaces */
-            --primary-color: #2E4057;        /* Corporate Steel Blue */
-            --secondary-color: #6B7280;      /* Mid Gray - Borders/Inactive */
-            --accent-color: #D97706;         /* Industrial Amber - Molten Metal */
-            --text-primary: #F9FAFB;         /* Off-White - Primary Text */
-            --text-secondary: #E5E7EB;       /* Light Gray - Headings */
-            --text-muted: #9CA3AF;           /* Muted Gray - Subtle Text */
-            --border-color: #374151;         /* Dark Border */
-            --hover-bg: #374151;             /* Hover State */
-            --list-check-color: #10B981;     /* Green Check - Original UL Color */
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, #0F1419 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 20px;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(180deg, var(--secondary-bg) 0%, rgba(31, 41, 55, 0.95) 100%);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            border-bottom: 2px solid var(--accent-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .header-content {
-            max-width: 1400px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
         }
 
         .logo-container {
-            width: 80px;
-            height: 80px;
-            background: var(--secondary-bg);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 30px rgba(217, 119, 6, 0.3);
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .logo-container img {
-            width: 65px;
-            height: 65px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(217, 119, 6, 0.4));
-        }
-
-        .company-info h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.3rem;
-        }
-
-        .company-info p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .contact-info {
-            text-align: right;
-        }
-
-        .contact-info p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin: 0.3rem 0;
-            font-weight: 500;
-        }
-
-        .contact-info strong {
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        /* Section Titles */
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-        }
-
-        /* Product Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .product-card {
-            background: var(--secondary-bg);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-color);
-            box-shadow: 0 12px 40px rgba(217, 119, 6, 0.2);
-        }
-
-        .product-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .product-badge {
-            display: inline-block;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .badge-alloy {
-            background: linear-gradient(135deg, var(--accent-color), #B45309);
-            color: var(--primary-bg);
-        }
-
-        .badge-bright {
-            background: linear-gradient(135deg, #F59E0B, var(--accent-color));
-            color: var(--primary-bg);
-        }
-
-        .badge-mild {
-            background: linear-gradient(135deg, var(--secondary-color), #4B5563);
-            color: var(--text-primary);
-        }
-
-        .badge-plates {
-            background: linear-gradient(135deg, #374151, var(--secondary-color));
-            color: var(--text-primary);
-        }
-
-        .product-card h3 {
-            font-size: 1.6rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .product-card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .specs-list {
-            list-style: none;
-            margin-top: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .specs-list li {
-            padding: 0.6rem 0;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .specs-list li:last-child {
-            border-bottom: none;
-        }
-
-        .specs-list li::before {
-            content: '✓';
-            color: var(--list-check-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        /* Get Quote Button - Unified Design */
-        .quote-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 1rem 2rem;
-            margin-top: 1.5rem;
-            background: linear-gradient(135deg, var(--accent-color), #B45309);
-            color: var(--primary-bg);
-            text-align: center;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
-        }
-
-        .quote-btn:hover {
-            background: linear-gradient(135deg, #B45309, var(--accent-color));
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(217, 119, 6, 0.5);
-        }
-
-        .quote-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Certifications Section */
-        .certifications {
-            background: var(--secondary-bg);
-            border-radius: 16px;
-            padding: 3rem;
-            margin-bottom: 4rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .cert-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--primary-bg);
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .cert-item:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(217, 119, 6, 0.15);
-        }
-
-        .cert-logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
-            background: var(--secondary-bg);
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
         }
 
-        .cert-logo img {
-            width: 50px;
-            height: 50px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: 100px;
             object-fit: contain;
+            border-radius: 50%;
         }
 
-        .cert-item h4 {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        .cert-item p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        .tagline {
+            font-size: 1.2em;
+            opacity: 0.9;
         }
 
-        /* Footer */
-        footer {
-            background: var(--secondary-bg);
-            padding: 3rem 2rem;
-            margin-top: 4rem;
-            border-top: 2px solid var(--accent-color);
+        .content {
+            padding: 40px;
         }
 
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
+        .section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
+            gap: 25px;
+            margin-top: 30px;
         }
 
-        .footer-section h3 {
-            color: var(--text-secondary);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .product-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .footer-section p,
-        .footer-section li {
-            color: var(--text-muted);
-            margin-bottom: 0.8rem;
-            line-height: 1.8;
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
 
-        .footer-section ul {
+        .product-card h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .product-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .product-card ul {
             list-style: none;
+            padding-left: 0;
         }
 
-        .footer-section a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .product-card ul li {
+            padding: 8px 0;
+            color: #333;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
         }
 
-        .footer-section a:hover {
-            color: var(--accent-color);
+        .product-card ul li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
         }
 
-        .footer-bottom {
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        .contact-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .certifications {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cert-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+            h1 {
+                font-size: 2em;
             }
-
-            .contact-info {
-                text-align: center;
-            }
-
-            .company-info h1 {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
+            
             .products-grid {
                 grid-template-columns: 1fr;
             }
@@ -435,146 +205,101 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo-container">
-                    <img src="https://i.postimg.cc/Kz0Zy0Zy/Whats-App-Image-2025-01-16-at-11-28-49-AM.jpg" alt="Bhavya Steel Industries Logo">
-                </div>
-                <div class="company-info">
-                    <h1>Bhavya Steel Industries</h1>
-                    <p>Premium Steel Manufacturing Excellence</p>
-                </div>
-            </div>
-            <div class="contact-info">
-                <p><strong>📞 Phone:</strong> +91 98765 43210</p>
-                <p><strong>✉️ Email:</strong> info@bhavyasteel.com</p>
-                <p><strong>📍 Location:</strong> Gujarat, India</p>
-            </div>
-        </div>
-    </header>
-
     <div class="container">
-        <h2 class="section-title">Our Premium Products</h2>
-        
-        <div class="products-grid">
-            <div class="product-card">
-                <span class="product-badge badge-alloy">Alloy Steel</span>
-                <h3>Alloy Steel Products</h3>
-                <p>High-performance alloy steel engineered for superior strength, durability, and resistance to extreme conditions.</p>
-                <ul class="specs-list">
-                    <li>EN Series: EN8, EN9, EN19, EN24, EN31, EN47</li>
-                    <li>Round sizes: 20mm to 300mm diameter</li>
-                    <li>High tensile strength and wear resistance</li>
-                    <li>Precision machined to exact specifications</li>
-                    <li>Ideal for automotive and heavy machinery</li>
-                </ul>
-                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
+        <header>
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/Kz0Zy0Zy/Whats-App-Image-2025-01-16-at-11-28-49-AM.jpg" alt="Bhavya Steel Industries Logo">
             </div>
+            <h1>BHAVYA STEEL INDUSTRIES</h1>
+            <p class="tagline">Excellence in Steel Manufacturing</p>
+        </header>
 
-            <div class="product-card">
-                <span class="product-badge badge-bright">Bright Bars</span>
-                <h3>Bright Bar Solutions</h3>
-                <p>Premium quality bright bars with exceptional surface finish and dimensional accuracy for precision engineering.</p>
-                <ul class="specs-list">
-                    <li>Mirror-finish surface quality</li>
-                    <li>Tight dimensional tolerances</li>
-                    <li>Available in round, square, and hexagonal</li>
-                    <li>Sizes from 6mm to 150mm</li>
-                    <li>Perfect for CNC machining operations</li>
-                </ul>
-                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
-            </div>
-
-            <div class="product-card">
-                <span class="product-badge badge-mild">Mild Steel</span>
-                <h3>Mild Steel Range</h3>
-                <p>Versatile mild steel products offering excellent weldability and formability for diverse industrial applications.</p>
-                <ul class="specs-list">
-                    <li>High-grade carbon steel composition</li>
-                    <li>Round sizes: 20mm to 250mm diameter</li>
-                    <li>Excellent machinability and weldability</li>
-                    <li>Cost-effective for structural applications</li>
-                    <li>Available in various grades and sizes</li>
-                </ul>
-                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
-            </div>
-
-            <div class="product-card">
-                <span class="product-badge badge-plates">Steel Plates</span>
-                <h3>Steel Plates & Sheets</h3>
-                <p>Heavy-duty steel plates and sheets manufactured to meet stringent quality standards for critical applications.</p>
-                <ul class="specs-list">
-                    <li>Thickness range: 6mm to 100mm</li>
-                    <li>Hot rolled and cold rolled options</li>
-                    <li>Certified for pressure vessel applications</li>
-                    <li>Custom cutting and fabrication available</li>
-                    <li>Wide range of grades and specifications</li>
-                </ul>
-                <button class="quote-btn" onclick="alert('Contact us at +91 98765 43210 or info@bhavyasteel.com for a quote!')">Get Quote</button>
-            </div>
-        </div>
-
-        <div class="certifications">
-            <h2 class="section-title">Quality Certifications</h2>
-            <div class="cert-grid">
-                <div class="cert-item">
-                    <div class="cert-logo">
-                        <img src="https://i.postimg.cc/Kz0Zy0Zy/Whats-App-Image-2025-01-16-at-11-28-49-AM.jpg" alt="ISO 9001">
+        <div class="content">
+            <div class="section">
+                <h2>Our Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <h3>🔩 Alloy Steel</h3>
+                        <p>High-quality alloy steel products for demanding applications</p>
+                        <ul>
+                            <li>EN8, EN9, EN19, EN24, EN31, EN47</li>
+                            <li>Round: 20mm to 300mm</li>
+                            <li>Square: 25mm to 150mm</li>
+                            <li>Flat: Custom sizes available</li>
+                            <li>Hexagonal: 10mm to 100mm</li>
+                        </ul>
                     </div>
-                    <h4>ISO 9001:2015</h4>
-                    <p>Quality Management System</p>
+
+                    <div class="product-card">
+                        <h3>✨ Bright Bars</h3>
+                        <p>Precision bright bars with superior finish</p>
+                        <ul>
+                            <li>Round: 6mm to 150mm</li>
+                            <li>Square: 10mm to 100mm</li>
+                            <li>Hexagonal: 8mm to 80mm</li>
+                            <li>Flat bars available</li>
+                            <li>Mirror finish quality</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-card">
+                        <h3>🏗️ Mild Steel</h3>
+                        <p>Versatile mild steel for construction and fabrication</p>
+                        <ul>
+                            <li>Round: 20mm to 250mm</li>
+                            <li>Square: 20mm to 200mm</li>
+                            <li>Flat: Various dimensions</li>
+                            <li>Angles and channels</li>
+                            <li>Custom cutting available</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-card">
+                        <h3>📐 Plates & Sheets</h3>
+                        <p>Heavy-duty plates and sheets for industrial use</p>
+                        <ul>
+                            <li>Thickness: 6mm to 100mm</li>
+                            <li>Hot rolled plates</li>
+                            <li>Cold rolled sheets</li>
+                            <li>Custom sizes available</li>
+                            <li>Various grades: IS2062, ASTM A36</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="cert-item">
-                    <div class="cert-logo">
-                        <img src="https://i.postimg.cc/Kz0Zy0Zy/Whats-App-Image-2025-01-16-at-11-28-49-AM.jpg" alt="ISO 14001">
-                    </div>
-                    <h4>ISO 14001:2015</h4>
-                    <p>Environmental Management</p>
+            </div>
+
+            <div class="section">
+                <h2>Quality Certifications</h2>
+                <div class="certifications">
+                    <div class="cert-badge">ISO 9001:2015</div>
+                    <div class="cert-badge">ISO 14001:2015</div>
+                    <div class="cert-badge">BIS Certified</div>
+                    <div class="cert-badge">MSME Registered</div>
                 </div>
-                <div class="cert-item">
-                    <div class="cert-logo">
-                        <img src="https://i.postimg.cc/Kz0Zy0Zy/Whats-App-Image-2025-01-16-at-11-28-49-AM.jpg" alt="BIS">
+            </div>
+
+            <div class="contact-section">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📞 Phone</h3>
+                        <p>+91 98765 43210</p>
                     </div>
-                    <h4>BIS Certified</h4>
-                    <p>Bureau of Indian Standards</p>
-                </div>
-                <div class="cert-item">
-                    <div class="cert-logo">
-                        <img src="https://i.postimg.cc/Kz0Zy0Zy/Whats-App-Image-2025-01-16-at-11-28-49-AM.jpg" alt="MSME">
+                    <div class="contact-item">
+                        <h3>✉️ Email</h3>
+                        <p>info@bhavyasteel.com</p>
                     </div>
-                    <h4>MSME Registered</h4>
-                    <p>Government Recognized</p>
+                    <div class="contact-item">
+                        <h3>📍 Location</h3>
+                        <p>Gujarat, India</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <footer>
+            <p>&copy; 2025 Bhavya Steel Industries. All Rights Reserved.</p>
+        </footer>
     </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>Bhavya Steel Industries is a leading manufacturer and supplier of premium quality steel products, serving industries across India with excellence and reliability.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                    <li><a href="#about">About Company</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <p><strong>Address:</strong><br>Industrial Area, Gujarat, India</p>
-                <p><strong>Phone:</strong> +91 98765 43210</p>
-                <p><strong>Email:</strong> info@bhavyasteel.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Bhavya Steel Industries. All Rights Reserved. | Designed for Excellence</p>
-        </div>
-    </footer>
 </body>
 </html>
