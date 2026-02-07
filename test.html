@@ -1,12 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Test Page - Bhavya Steel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Status - Bhavya Steel Industries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .status-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #1e3a8a; }
+        .success { color: #10b981; font-size: 24px; }
+        .link-box {
+            background: #f0f9ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #1e3a8a;
+        }
+        a {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover { text-decoration: underline; }
+        .timestamp {
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Test Page Working!</h1>
-    <p>If you can see this, GitHub Pages is working.</p>
-    <p><a href="index.html">Go to Homepage</a></p>
-    <p><a href="quote-request.html">Go to Quote Form</a></p>
+    <div class="status-box">
+        <h1>✅ GitHub Pages is Working!</h1>
+        <p class="success">Site Status: ONLINE</p>
+        
+        <h2>Available Pages:</h2>
+        
+        <div class="link-box">
+            <strong>Homepage:</strong><br>
+            <a href="index.html">Open Homepage</a>
+        </div>
+        
+        <div class="link-box">
+            <strong>Quote Request Form:</strong><br>
+            <a href="quote-request.html">Open Quote Form</a>
+        </div>
+        
+        <div class="link-box">
+            <strong>Thank You Page:</strong><br>
+            <a href="quote-thank-you.html">Open Thank You Page</a>
+        </div>
+        
+        <h2>Direct URLs:</h2>
+        <div class="link-box">
+            <p><strong>Homepage:</strong><br>
+            <code>https://kapasiraj84-beep.github.io/bhavya-steel-industries/</code></p>
+            
+            <p><strong>Quote Form:</strong><br>
+            <code>https://kapasiraj84-beep.github.io/bhavya-steel-industries/quote-request.html</code></p>
+        </div>
+        
+        <p class="timestamp">Last Updated: February 7, 2026 - 12:20 PM IST</p>
+        
+        <p style="margin-top: 30px; padding: 15px; background: #fef3c7; border-radius: 5px;">
+            <strong>Note:</strong> If you're seeing this page, GitHub Pages is working correctly. 
+            Click the links above to access your website pages.
+        </p>
+    </div>
+    
+    <script>
+        // Log to console for debugging
+        console.log('Test page loaded successfully');
+        console.log('Current URL:', window.location.href);
+        console.log('Timestamp:', new Date().toISOString());
+    </script>
 </body>
 </html>
