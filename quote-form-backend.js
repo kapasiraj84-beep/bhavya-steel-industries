@@ -1,5 +1,7 @@
 // Backend API Configuration
-const API_URL = 'https://bhavya-steel-api.up.railway.app/api/quote'; // Will be updated after Railway deployment
+// IMPORTANT: Replace this URL with your Vercel deployment URL after deploying
+// Example: https://bhavya-steel-industries.vercel.app/api/quote
+const API_URL = 'https://bhavya-steel-industries.vercel.app/api/quote';
 
 // Form submission handler
 document.getElementById('quoteForm').addEventListener('submit', async function(e) {
