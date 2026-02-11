@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Bhavya Steel Industries | Naroda, Ahmedabad</title>
+    <meta name="description" content="Contact Bhavya Steel Industries for all your steel requirements. Located in Naroda, Ahmedabad. Call +91 9409420760 or +91 9327703647">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+        .info-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-accent);
+        }
+        .info-card i {
+            font-size: 2.75rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.25rem;
+        }
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.85rem;
+            color: var(--dark);
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
+        }
+        .info-card p {
+            color: var(--grey);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+        .whatsapp-link {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-link:hover {
+            text-decoration: underline;
+        }
+        .contact-form-section {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .submit-btn {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-section">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>BHAVYA STEEL</h1>
+                        <p class="tagline">Premium Steel Solutions</p>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="quote.html" class="cta-btn">Get Quote</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Contact Us</span>
+            </nav>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1>Contact Us</h1>
+            <p>Get in Touch for Enquiries, Quotes, and Expert Consultation</p>
+        </div>
+    </div>
+
+    <section style="background: white;">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>Plot No: 335/B, Chamunda Chawl<br>Below Satguru Swami Teooramji Maharaj Overbridge<br>Near Railway Crossing, Naroda, NH-8<br>Ahmedabad, Gujarat, India</p>
+                </div>
+                <div class="info-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp / Call</h3>
+                    <p><strong>Gautam Kapasi</strong><br><a href="https://wa.me/919409420760" class="whatsapp-link">+91 9409420760</a></p>
+                    <p style="margin-top: 1rem;"><strong>Raj Kapasi</strong><br><a href="https://wa.me/919327703647" class="whatsapp-link">+91 9327703647</a></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Address</h3>
+                    <p><a href="mailto:bhavyasteelindustries20@gmail.com" style="color: var(--grey); text-decoration: none; font-weight: 700;">bhavyasteelindustries20@gmail.com</a></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-id-card"></i>
+                    <h3>GST Number</h3>
+                    <p style="font-weight: 700; font-size: 1.05rem; color: var(--dark);">24AWIPK1900F1Z1</p>
+                </div>
+            </div>
+
+            <div class="contact-form-section">
+                <h2 style="font-size: 2rem; font-weight: 900; margin-bottom: 1rem; font-family: 'Poppins', sans-serif; text-align: center;">Send Us a Message</h2>
+                <p style="text-align: center; color: var(--grey); margin-bottom: 2.5rem; font-weight: 600;">Fill out the form below and we'll get back to you as soon as possible</p>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+91 XXXXXXXXXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required placeholder="What is this regarding?">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us more about your requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="footer-logo">
+                    <h3>Bhavya Steel Industries</h3>
+                    <p>Leading stockist and supplier of premium alloy steel, mild steel, bright bars, steel plates, and industrial hardware in Naroda, Ahmedabad.</p>
+                    <p style="margin-top: 1rem;"><strong>GST:</strong> 24AWIPK1900F1Z1</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="quote.html">Request Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Product Categories</h3>
+                    <ul>
+                        <li><a href="alloy-steel.html">Alloy Steel</a></li>
+                        <li><a href="mild-steel.html">Mild Steel Products</a></li>
+                        <li><a href="bright-bars.html">Bright Bars</a></li>
+                        <li><a href="steel-plates.html">Steel Plates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fab fa-whatsapp"></i> +91 9409420760</p>
+                    <p><i class="fab fa-whatsapp"></i> +91 9327703647</p>
+                    <p><i class="fas fa-envelope"></i> bhavyasteelindustries20@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Naroda, Ahmedabad, Gujarat</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bhavya Steel Industries. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
