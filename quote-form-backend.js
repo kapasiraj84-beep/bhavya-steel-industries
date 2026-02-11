@@ -1,7 +1,7 @@
 // Backend API Configuration
 // IMPORTANT: Replace this URL with your Vercel deployment URL after deploying
 // Example: https://bhavya-steel-industries.vercel.app/api/quote
-const API_URL = 'https://bhavya-steel-industries.vercel.app/api/quote';
+const API_URL = https://script.google.com/macros/s/AKfycbzUIBBfgI2LcSjscTxxJj4FXO_sZU4COfYYkW10XjIW6fPCXdofTjF5M-ccCLiaFy4v/exec'
 
 // Form submission handler
 document.getElementById('quoteForm').addEventListener('submit', async function(e) {
