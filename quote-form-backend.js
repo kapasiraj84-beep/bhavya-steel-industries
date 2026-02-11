@@ -61,7 +61,7 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
             }
         } else {
             // Error from API
-            throw new Error(result.error || 'Failed to submit quote request');
+            throw new Error(result.message || 'Failed to submit quote request');
         }
         
     } catch (error) {
