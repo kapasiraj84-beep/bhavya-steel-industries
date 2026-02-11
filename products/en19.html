@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EN19 Alloy Steel | Bhavya Steel Industries</title>
+    <meta name="description" content="EN19 Alloy Steel - High tensile strength steel for gears, shafts, and heavy-duty applications. Premium quality from Bhavya Steel Industries, Naroda, Ahmedabad.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --grey: #64748b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6; 
+            color: var(--dark);
+            background: var(--white);
+        }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header { 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: var(--shadow-md);
+        }
+        
+        .navbar .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo-section { display: flex; align-items: center; gap: 1rem; }
+        
+        .logo-img { 
+            width: 50px; 
+            height: 50px; 
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+            border-radius: 8px;
+            border: 2px solid var(--border);
+        }
+        
+        .logo-text h1 { 
+            font-size: 1.2rem; 
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .tagline { 
+            font-size: 0.65rem; 
+            color: var(--grey);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .nav-menu { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        
+        .nav-menu a { 
+            color: var(--dark);
+            text-decoration: none; 
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .nav-menu a:hover { 
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .nav-menu a.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .nav-menu a.enquiry-btn {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            border-bottom: none;
+        }
+
+        .nav-menu a.enquiry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Product Detail Section */
+        .product-detail {
+            margin-top: 90px;
+            padding: 60px 24px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--grey);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .product-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .product-image-section {
+            position: sticky;
+            top: 120px;
+        }
+
+        .product-image-wrapper {
+            width: 100%;
+            height: 500px;
+            background: var(--light);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info-section {
+            padding: 1rem 0;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+        }
+
+        .product-description {
+            font-size: 1.1rem;
+            color: var(--grey);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .spec-section {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .spec-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .spec-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .spec-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .spec-table td {
+            padding: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .spec-table td:first-child {
+            font-weight: 600;
+            color: var(--dark);
+            width: 40%;
+        }
+
+        .spec-table td:last-child {
+            color: var(--grey);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--grey);
+        }
+
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            background: var(--gradient-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cta-section p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-enquiry {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 14px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-enquiry:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 24px 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .product-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-image-section {
+                position: relative;
+                top: 0;
+            }
+
+            .product-image-wrapper {
+                height: 400px;
+            }
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo-text h1 {
+                font-size: 1rem;
+            }
+
+            .tagline {
+                font-size: 0.6rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .nav-menu a {
+                font-size: 0.85rem;
+            }
+
+            .product-title {
+                font-size: 1.75rem;
+            }
+
+            .product-description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-section">
+                    <img src="../logo.png" alt="Bhavya Steel Industries Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Bhavya Steel Industries</h1>
+                        <p class="tagline">Premium Steel Stockist</p>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#products" class="active">Products</a></li>
+                    <li><a href="../enquiry.html" class="enquiry-btn">Enquiry</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> / <a href="../index.html#products">Products</a> / EN19 Alloy Steel
+            </div>
+
+            <div class="product-layout">
+                <!-- Product Image -->
+                <div class="product-image-section">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/12/366686362/XE/ZC/QZ/63421244/carbon-alloy-steel-round-bars.jpg" 
+                             alt="EN19 Alloy Steel Round Bars" 
+                             class="product-image">
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="product-info-section">
+                    <span class="product-badge">Alloy Steel</span>
+                    <h1 class="product-title">EN19 Alloy Steel</h1>
+                    <p class="product-description">
+                        EN19 is a high-quality alloy steel known for its exceptional tensile strength and toughness. 
+                        Widely used in manufacturing gears, shafts, and heavy-duty components requiring superior mechanical properties.
+                    </p>
+
+                    <!-- Specifications -->
+                    <div class="spec-section">
+                        <h3>Technical Specifications</h3>
+                        <table class="spec-table">
+                            <tr>
+                                <td>Material Grade</td>
+                                <td>EN19 (709M40)</td>
+                            </tr>
+                            <tr>
+                                <td>Tensile Strength</td>
+                                <td>850-1000 N/mm²</td>
+                            </tr>
+                            <tr>
+                                <td>Yield Strength</td>
+                                <td>680 N/mm² (min)</td>
+                            </tr>
+                            <tr>
+                                <td>Hardness</td>
+                                <td>248-302 HB</td>
+                            </tr>
+                            <tr>
+                                <td>Available Forms</td>
+                                <td>Round Bars, Flat Bars, Plates</td>
+                            </tr>
+                            <tr>
+                                <td>Standard Sizes</td>
+                                <td>10mm to 500mm diameter</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Key Features -->
+                    <div class="spec-section">
+                        <h3>Key Features & Applications</h3>
+                        <ul class="features-list">
+                            <li>High tensile strength and toughness</li>
+                            <li>Excellent wear resistance</li>
+                            <li>Good machinability in annealed condition</li>
+                            <li>Ideal for gears, shafts, and axles</li>
+                            <li>Suitable for heavy-duty applications</li>
+                            <li>Used in automotive and engineering industries</li>
+                            <li>Can be heat treated for enhanced properties</li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="cta-section">
+                        <h3>Need EN19 Alloy Steel?</h3>
+                        <p>Get in touch with us for pricing, availability, and custom requirements</p>
+                        <a href="../enquiry.html" class="btn-enquiry">
+                            <i class="fas fa-envelope"></i> Send Enquiry
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Bhavya Steel Industries. All rights reserved.</p>
+            <p>Naroda, Ahmedabad, Gujarat</p>
+        </div>
+    </footer>
+</body>
+</html>
