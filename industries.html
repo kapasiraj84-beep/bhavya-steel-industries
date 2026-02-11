@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries We Serve | Bhavya Steel Industries | Manufacturing, Construction, Automotive</title>
+    <meta name="description" content="Bhavya Steel Industries serves diverse industries including manufacturing, construction, automotive, engineering, and more with premium steel products.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .industry-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--border);
+        }
+        .industry-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--primary-accent);
+        }
+        .industry-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .industry-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        .industry-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+        }
+        .industry-card p {
+            color: var(--grey);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .industry-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .industry-card ul li {
+            padding: 0.5rem 0;
+            color: var(--grey);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        .industry-card ul li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo-section">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>BHAVYA STEEL</h1>
+                        <p class="tagline">Premium Steel Solutions</p>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="industries.html" class="active">Industries</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="quote.html" class="cta-btn">Get Quote</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Industries We Serve</span>
+            </nav>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <div class="page-header-content">
+            <h1>Industries We Serve</h1>
+            <p>Trusted Steel Partner Across Diverse Industrial Sectors</p>
+        </div>
+    </div>
+
+    <section style="background: white;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;">
+                
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing</h3>
+                    <p>Supplying high-quality steel materials for manufacturing units producing machinery, equipment, and industrial components.</p>
+                    <ul>
+                        <li>Machine Parts & Components</li>
+                        <li>Industrial Equipment</li>
+                        <li>Production Machinery</li>
+                        <li>Assembly Line Components</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Construction</h3>
+                    <p>Providing structural steel products for construction projects including buildings, bridges, and infrastructure development.</p>
+                    <ul>
+                        <li>Structural Frameworks</li>
+                        <li>Building Construction</li>
+                        <li>Infrastructure Projects</li>
+                        <li>Reinforcement Materials</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Automotive</h3>
+                    <p>Delivering precision steel materials for automotive manufacturing, parts production, and vehicle component fabrication.</p>
+                    <ul>
+                        <li>Vehicle Components</li>
+                        <li>Auto Parts Manufacturing</li>
+                        <li>Chassis & Frames</li>
+                        <li>Engine Components</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Engineering</h3>
+                    <p>Supporting engineering firms with specialized steel grades for custom projects, prototypes, and precision engineering.</p>
+                    <ul>
+                        <li>Custom Engineering Projects</li>
+                        <li>Precision Components</li>
+                        <li>Prototype Development</li>
+                        <li>Special Applications</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Tool & Die Making</h3>
+                    <p>Supplying tool steel and alloy steel grades for manufacturing dies, molds, cutting tools, and precision tooling.</p>
+                    <ul>
+                        <li>Die & Mold Making</li>
+                        <li>Cutting Tools</li>
+                        <li>Precision Tooling</li>
+                        <li>Jigs & Fixtures</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <h3>Fabrication</h3>
+                    <p>Providing steel materials for metal fabrication shops, welding units, and custom fabrication projects.</p>
+                    <ul>
+                        <li>Metal Fabrication</li>
+                        <li>Welding Projects</li>
+                        <li>Custom Structures</li>
+                        <li>Sheet Metal Work</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Power & Energy</h3>
+                    <p>Supplying steel products for power generation plants, transmission equipment, and energy sector infrastructure.</p>
+                    <ul>
+                        <li>Power Plant Equipment</li>
+                        <li>Transmission Components</li>
+                        <li>Energy Infrastructure</li>
+                        <li>Generator Parts</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Marine & Shipbuilding</h3>
+                    <p>Providing corrosion-resistant steel materials for marine applications, shipbuilding, and offshore structures.</p>
+                    <ul>
+                        <li>Ship Components</li>
+                        <li>Marine Equipment</li>
+                        <li>Offshore Structures</li>
+                        <li>Port Infrastructure</li>
+                    </ul>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <h3>Agriculture Equipment</h3>
+                    <p>Supplying durable steel materials for agricultural machinery, farm equipment, and irrigation systems.</p>
+                    <ul>
+                        <li>Farm Machinery</li>
+                        <li>Agricultural Equipment</li>
+                        <li>Irrigation Systems</li>
+                        <li>Tractor Components</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Your Industry Not Listed?</h2>
+                <p>We serve many more industries with custom steel solutions. Contact us to discuss your specific requirements.</p>
+                <div class="cta-buttons">
+                    <a href="quote.html" class="btn btn-primary">Request Quote</a>
+                    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="BSI Logo" class="footer-logo">
+                    <h3>Bhavya Steel Industries</h3>
+                    <p>Leading stockist and supplier of premium alloy steel, mild steel, bright bars, steel plates, and industrial hardware in Naroda, Ahmedabad.</p>
+                    <p style="margin-top: 1rem;"><strong>GST:</strong> 24AWIPK1900F1Z1</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="quote.html">Request Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Product Categories</h3>
+                    <ul>
+                        <li><a href="alloy-steel.html">Alloy Steel</a></li>
+                        <li><a href="mild-steel.html">Mild Steel Products</a></li>
+                        <li><a href="bright-bars.html">Bright Bars</a></li>
+                        <li><a href="steel-plates.html">Steel Plates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fab fa-whatsapp"></i> +91 9409420760</p>
+                    <p><i class="fab fa-whatsapp"></i> +91 9327703647</p>
+                    <p><i class="fas fa-envelope"></i> bhavyasteelindustries20@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Naroda, Ahmedabad, Gujarat</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bhavya Steel Industries. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
