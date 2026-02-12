@@ -7,7 +7,863 @@
     <meta name="description" content="Leading stockist and supplier of Alloy Steel (EN19, EN24, EN31, EN8, SAE 4140, D2, F11), Mild Steel, Bright Bars, C45 Plates, MS Plates, and Industrial Hardware in Naroda, Ahmedabad, Gujarat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            /* Sophisticated Industrial Color Palette */
+            --primary: #0a1628;
+            --primary-light: #1e3a5f;
+            --primary-accent: #2563eb;
+            --secondary: #475569;
+            --accent: #ea580c;
+            --accent-light: #fb923c;
+            --accent-glow: rgba(234, 88, 12, 0.25);
+            --success: #059669;
+            --error: #dc2626;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --grey: #64748b;
+            --grey-light: #94a3b8;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --border-light: #f1f5f9;
+            
+            /* Premium Shadow System */
+            --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.03);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+            --shadow-xl: 0 16px 32px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.06);
+            --shadow-2xl: 0 24px 48px rgba(0,0,0,0.16), 0 12px 24px rgba(0,0,0,0.08);
+            
+            /* Refined Gradients */
+            --gradient-primary: linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #2563eb 100%);
+            --gradient-accent: linear-gradient(135deg, #ea580c 0%, #fb923c 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --gradient-overlay: linear-gradient(135deg, rgba(10, 22, 40, 0.97) 0%, rgba(30, 58, 95, 0.95) 100%);
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7; 
+            color: var(--dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .container { 
+            max-width: 1280px; 
+            margin: 0 auto; 
+            padding: 0 32px; 
+        }
+
+        /* Premium Header */
+        header { 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header.scrolled {
+            padding: 1rem 0;
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .navbar .container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo-section { 
+            display: flex; 
+            align-items: center; 
+            gap: 1.25rem; 
+        }
+        
+        .logo-img { 
+            width: 60px; 
+            height: 60px; 
+            object-fit: contain;
+            background: white;
+            padding: 6px;
+            border-radius: 14px;
+            border: 2px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.08) rotate(-2deg);
+            border-color: var(--primary-accent);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .logo-text h1 { 
+            font-size: 1.4rem; 
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .tagline { 
+            font-size: 0.7rem; 
+            color: var(--grey);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+        
+        .nav-menu { 
+            display: flex; 
+            list-style: none; 
+            gap: 2.5rem; 
+        }
+        
+        .nav-menu a { 
+            color: var(--dark);
+            text-decoration: none; 
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 10px 0;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-menu a:hover { 
+            color: var(--primary-accent);
+        }
+
+        .nav-menu a.cta-btn {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 10px 26px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-menu a.cta-btn::after {
+            display: none;
+        }
+
+        .nav-menu a.cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px var(--accent-glow);
+        }
+
+        /* Premium Hero Section */
+        .hero { 
+            background: var(--gradient-primary);
+            color: white; 
+            padding: 170px 32px 110px; 
+            margin-top: 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://5.imimg.com/data5/SELLER/Default/2023/12/366686362/XE/ZC/QZ/63421244/carbon-alloy-steel-round-bars.jpg') center/cover;
+            opacity: 0.07;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(234, 88, 12, 0.12) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .hero-logo { 
+            width: 180px; 
+            height: 180px; 
+            background: rgba(255, 255, 255, 0.98); 
+            border-radius: 26px; 
+            padding: 24px;
+            box-shadow: var(--shadow-2xl);
+            object-fit: contain;
+            animation: float 3.5s ease-in-out infinite;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .hero-title-group h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 1.25rem;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            line-height: 1.1;
+        }
+        
+        .hero-title-group p {
+            font-size: 1.3rem;
+            opacity: 0.96;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-subtitle { 
+            font-size: 1.4rem; 
+            margin-bottom: 1.25rem; 
+            font-weight: 800;
+            opacity: 0.95;
+            letter-spacing: 0.3px;
+        }
+        
+        .hero-desc { 
+            font-size: 1.1rem; 
+            margin-bottom: 3rem; 
+            opacity: 0.92;
+            line-height: 1.9;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+        }
+        
+        .hero-buttons { 
+            display: flex; 
+            gap: 1.75rem; 
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+        
+        .btn { 
+            padding: 16px 40px; 
+            border-radius: 14px; 
+            text-decoration: none; 
+            font-weight: 800;
+            font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-primary { 
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 16px 40px var(--accent-glow);
+        }
+        
+        .btn-secondary { 
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(12px);
+            color: white; 
+            border: 2px solid rgba(255,255,255,0.35);
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            border-color: white;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--light);
+            padding: 2.5rem 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trust-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .trust-item:hover {
+            transform: translateY(-6px);
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .trust-item i {
+            font-size: 2.25rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        .trust-item h4 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 0.35rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .trust-item p {
+            font-size: 0.9rem;
+            color: var(--grey);
+            font-weight: 600;
+        }
+
+        /* Section Styles */
+        section { 
+            padding: 100px 32px; 
+        }
+        
+        .section-title { 
+            text-align: center; 
+            font-size: 3rem; 
+            margin-bottom: 1rem; 
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            font-family: 'Poppins', sans-serif;
+            background: var(--gradient-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle { 
+            text-align: center; 
+            font-size: 1.2rem; 
+            color: var(--grey);
+            margin-bottom: 4.5rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* Products Section */
+        .products {
+            background: var(--white);
+        }
+        
+        .product-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
+            gap: 2.5rem; 
+            margin-top: 3rem; 
+        }
+        
+        .product-card { 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .product-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .product-image-wrapper {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .product-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.06) 100%);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 2.25rem;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 1.25rem;
+        }
+
+        .product-badge.bright {
+            background: var(--gradient-accent);
+        }
+
+        .product-badge.mild-steel {
+            background: var(--gradient-dark);
+        }
+
+        .product-badge.plate {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+        }
+        
+        .product-card h3 { 
+            font-size: 1.5rem; 
+            margin-bottom: 0.85rem; 
+            font-weight: 900;
+            color: var(--dark);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.5px;
+        }
+        
+        .product-card p { 
+            color: var(--grey);
+            margin-bottom: 1.5rem; 
+            font-size: 0.98rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+        
+        .product-specs {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        
+        .product-specs h4 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .product-card ul { 
+            list-style: none; 
+            padding: 0; 
+        }
+        
+        .product-card ul li { 
+            padding: 0.65rem 0; 
+            color: var(--grey);
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+        }
+
+        .product-card ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .product-card ul li:before { 
+            content: "✓"; 
+            color: var(--success);
+            font-weight: bold; 
+            margin-right: 0.85rem;
+            font-size: 1.1rem;
+        }
+
+        .product-cta {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .product-cta:hover {
+            transform: translateX(6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* About Section */
+        .about { 
+            background: var(--light);
+        }
+        
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .about-logo-section {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        
+        .about-logo {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin: 0 auto 1.75rem;
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-xl);
+            border: 2px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .about-logo:hover {
+            transform: scale(1.06) rotate(-2deg);
+            box-shadow: var(--shadow-2xl);
+        }
+        
+        .about-text h3 { 
+            font-size: 2rem; 
+            margin-bottom: 1.75rem; 
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.8px;
+        }
+        
+        .about-text p { 
+            margin-bottom: 1.75rem; 
+            color: var(--grey);
+            line-height: 1.9; 
+            font-size: 1.08rem;
+            font-weight: 500;
+        }
+        
+        .features { 
+            margin-top: 3.5rem; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.75rem; 
+        }
+        
+        .feature { 
+            display: flex; 
+            align-items: center; 
+            gap: 1.25rem; 
+            background: white;
+            padding: 1.75rem; 
+            border-radius: 14px; 
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-accent);
+        }
+        
+        .feature i { 
+            font-size: 2rem;
+            min-width: 40px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature span {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.98rem;
+        }
+        
+        .gst-info { 
+            margin-top: 3.5rem; 
+            padding: 2.5rem; 
+            background: var(--gradient-dark);
+            color: white;
+            border-radius: 18px; 
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .gst-info p {
+            margin-bottom: 0.85rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .gst-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact { 
+            background: var(--white);
+        }
+        
+        .contact-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2.5rem; 
+            margin-top: 3.5rem; 
+        }
+        
+        .info-card { 
+            background: var(--light);
+            padding: 2.5rem; 
+            border-radius: 18px; 
+            text-align: center; 
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+        
+        .info-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-accent);
+        }
+        
+        .info-card i { 
+            font-size: 2.75rem; 
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.25rem; 
+        }
+        
+        .info-card h3 { 
+            font-size: 1.3rem; 
+            margin-bottom: 0.85rem; 
+            color: var(--dark);
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.3px;
+        }
+        
+        .info-card p { 
+            color: var(--grey);
+            font-size: 0.98rem; 
+            line-height: 1.8;
+            font-weight: 600;
+        }
+        
+        .whatsapp-link { 
+            color: #059669; 
+            text-decoration: none; 
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-link:hover { 
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer { 
+            background: var(--gradient-dark);
+            color: white; 
+            padding: 4.5rem 32px 2.5rem; 
+        }
+        
+        .footer-content { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 3.5rem; 
+            margin-bottom: 3.5rem; 
+        }
+        
+        .footer-logo {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            margin-bottom: 1.25rem;
+            background: white;
+            padding: 14px;
+            border-radius: 14px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.75rem;
+            font-weight: 900;
+            font-size: 1.15rem;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.3px;
+        }
+        
+        .footer-section p { 
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 0.85rem;
+            line-height: 1.8;
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+        
+        .footer-section ul { 
+            list-style: none; 
+        }
+        
+        .footer-section ul li { 
+            margin-bottom: 0.85rem; 
+            color: rgba(255,255,255,0.85);
+            font-size: 0.92rem;
+            font-weight: 500;
+        }
+        
+        .footer-section a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom { 
+            text-align: center; 
+            padding-top: 2.5rem; 
+            border-top: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.75);
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) { 
+            .nav-menu { display: none; }
+            .hero-title-group h1 { font-size: 2.25rem; }
+            .hero-subtitle { font-size: 1.15rem; }
+            .section-title { font-size: 2.25rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .hero-logo { width: 150px; height: 150px; }
+            .about-logo { width: 170px; height: 170px; }
+            .hero { padding: 130px 24px 70px; }
+            section { padding: 70px 24px; }
+            .container { padding: 0 24px; }
+        }
+    </style>
 </head>
 <body>
     <header id="header">
@@ -21,18 +877,17 @@
                     </div>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="industries.html">Industries</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="quote.html" class="cta-btn">Get Quote</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="enquiry-request.html" class="cta-btn">Get Enquiry</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-logo-container">
@@ -45,135 +900,446 @@
                 <p class="hero-subtitle">Premium Alloy Steel & Mild Steel Stockist</p>
                 <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, SAE 4140, D2, F11), mild steel products, bright bars, C45 plates, MS plates, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
                 <div class="hero-buttons">
-                    <a href="products.html" class="btn btn-primary">View Products</a>
-                    <a href="quote.html" class="btn btn-secondary">Request Quote</a>
+                    <a href="#products" class="btn btn-primary">View Products</a>
+                    <a href="enquiry-request.html" class="btn btn-secondary">Request Enquiry</a>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="trust-bar">
-        <div class="container">
-            <div class="trust-items">
-                <div class="trust-item">
-                    <i class="fas fa-certificate"></i>
-                    <h4>GST Certified</h4>
-                    <p>24AWIPK1900F1Z1</p>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-industry"></i>
-                    <h4>Wide Product Range</h4>
-                    <p>Alloy & Mild Steel</p>
-                </div>
-                <div class="trust-item">
-                    <i class="fas fa-shipping-fast"></i>
-                    <h4>Fast Delivery</h4>
-                    <p>Across Gujarat</p>
-                </div>
+        <div class="trust-items">
+            <div class="trust-item">
+                <i class="fas fa-certificate"></i>
+                <h4>GST Certified</h4>
+                <p>24AWIPK1900F1Z1</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-industry"></i>
+                <h4>Wide Product Range</h4>
+                <p>Alloy & Mild Steel</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-shipping-fast"></i>
+                <h4>Fast Delivery</h4>
+                <p>Across Gujarat</p>
             </div>
         </div>
     </div>
 
-    <section class="product-categories">
+    <section id="products" class="products">
         <div class="container">
-            <h2 class="section-title">Our Product Range</h2>
-            <p class="section-subtitle">Comprehensive Steel Solutions for Every Industrial Need</p>
-            <div class="category-grid">
-                <a href="alloy-steel.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-industry"></i>
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-subtitle">Premium Quality Steel Products for Every Industrial Need</p>
+            <div class="product-grid">
+                
+                <!-- EN8 Round Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/12/366681641/FY/EC/XI/63421244/en8-alloy-steel-round-bar.jpg" alt="EN8 Alloy Steel Round Bar" class="product-image">
                     </div>
-                    <h3>Alloy Steel</h3>
-                    <p>EN19, EN24, EN31, EN8, SAE 4140, D2, F11</p>
-                    <span class="category-link">Explore Range →</span>
-                </a>
-                <a href="mild-steel.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-tools"></i>
+                    <div class="product-content">
+                        <span class="product-badge">Alloy Steel</span>
+                        <h3>EN8 Round Bars</h3>
+                        <p>Medium carbon steel with excellent machinability and good tensile strength for general engineering applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN8 (080M40)</li>
+                                <li>Diameter: 10mm to 300mm</li>
+                                <li>Finish: Black/Bright</li>
+                                <li>Application: Shafts, Axles, Gears</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
                     </div>
-                    <h3>Mild Steel</h3>
-                    <p>Round, Square, Flat, Hexagon Bars</p>
-                    <span class="category-link">Explore Range →</span>
-                </a>
-                <a href="bright-bars.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-gem"></i>
+                </div>
+
+                <!-- EN31 Round Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/KP/TZ/YS/63421244/en-31-ms-round-bar-500x500.jpg" alt="EN31 Alloy Steel Round Bar" class="product-image">
                     </div>
-                    <h3>Bright Bars</h3>
-                    <p>Cold Drawn & Polished Finish</p>
-                    <span class="category-link">Explore Range →</span>
-                </a>
-                <a href="steel-plates.html" class="category-card">
-                    <div class="category-icon">
-                        <i class="fas fa-layer-group"></i>
+                    <div class="product-content">
+                        <span class="product-badge">Alloy Steel</span>
+                        <h3>EN31 Round Bars</h3>
+                        <p>High carbon chromium bearing steel with excellent wear resistance and hardness.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN31 (SAE 52100)</li>
+                                <li>Diameter: 10mm to 100mm</li>
+                                <li>Finish: Black/Bright</li>
+                                <li>Application: Bearings, Dies</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
                     </div>
-                    <h3>Steel Plates</h3>
-                    <p>C45, MS Plates - Custom Sizes</p>
-                    <span class="category-link">Explore Range →</span>
-                </a>
+                </div>
+
+                <!-- EN19 Round Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/LA/CI/NO/63421244/en19-round-bar-500x500.jpg" alt="EN19 Alloy Steel Round Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge">Alloy Steel</span>
+                        <h3>EN19 Round Bars</h3>
+                        <p>High tensile alloy steel with excellent strength and toughness properties.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN19 (42CrMo4)</li>
+                                <li>Diameter: 10mm to 150mm</li>
+                                <li>Finish: Hot Rolled/Bright</li>
+                                <li>Application: Gears, Shafts</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Round Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/12/366686362/XE/ZC/QZ/63421244/carbon-alloy-steel-round-bars.jpg" alt="Carbon Alloy Steel Round Bars" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge mild-steel">Mild Steel</span>
+                        <h3>MS Round Bars</h3>
+                        <p>General purpose mild steel round bars for construction and fabrication.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: IS 2062, EN8</li>
+                                <li>Diameter: 6mm to 100mm</li>
+                                <li>Finish: Black/Hot Rolled</li>
+                                <li>Application: General Engineering</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Flat Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SO/TJ/MY-10643804/mild-steel-flat-bar-500x500.jpg" alt="Mild Steel Flat Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge mild-steel">Mild Steel</span>
+                        <h3>MS Flat Bars</h3>
+                        <p>Hot rolled mild steel flat bars for structural and fabrication applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: IS 2062 (Fe 250/410)</li>
+                                <li>Width: 25mm to 150mm</li>
+                                <li>Thickness: 3mm to 50mm</li>
+                                <li>Application: Construction, Fabrication</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Square Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2020/9/UB/XV/YG/5298298/ms-square-bar-500x500.jpeg" alt="MS Square Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge mild-steel">Mild Steel</span>
+                        <h3>MS Square Bars</h3>
+                        <p>Hot rolled mild steel square bars for general engineering and construction.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: IS 2062 (Fe 250)</li>
+                                <li>Size: 10mm to 100mm</li>
+                                <li>Finish: Black/Hot Rolled</li>
+                                <li>Application: Structural Work</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Bright Round Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/4/304056278/MZ/DR/CF/999899/ms-bright-round-bar-3mm-to-100mm-500x500.jpg" alt="MS Bright Round Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge bright">Bright Bar</span>
+                        <h3>MS Bright Round Bars</h3>
+                        <p>Cold drawn and polished mild steel round bars with superior surface finish and tight tolerances.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN8, C45</li>
+                                <li>Diameter: 3mm to 100mm</li>
+                                <li>Finish: Cold Drawn & Polished</li>
+                                <li>Application: CNC Components, Shafts</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Bright Flat Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2022/6/QY/ZS/II/142519503/ms-bright-bar-flat-500x500.png" alt="MS Bright Flat Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge bright">Bright Bar</span>
+                        <h3>MS Bright Flat Bars</h3>
+                        <p>Precision cold drawn flat bars with smooth polished finish for high-precision applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN8, C45</li>
+                                <li>Width: 10mm to 100mm</li>
+                                <li>Thickness: 3mm to 25mm</li>
+                                <li>Application: Precision Parts, Tooling</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Bright Square Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2025/5/507462232/PM/JD/RH/1478275/mild-steel-square-bright-bar-500x500.png" alt="MS Bright Square Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge bright">Bright Bar</span>
+                        <h3>MS Bright Square Bars</h3>
+                        <p>Cold drawn square bars with polished finish for precision engineering applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN8, C45</li>
+                                <li>Size: 6mm to 75mm</li>
+                                <li>Finish: Cold Drawn & Polished</li>
+                                <li>Application: Fasteners, Precision Parts</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Bright Hexagon Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/KH/NL/PM/SELLER-67352173/ms-hexagonal-bright-bar-500x500.jpg" alt="MS Bright Hexagon Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge bright">Bright Bar</span>
+                        <h3>MS Bright Hexagon Bars</h3>
+                        <p>Precision cold drawn hexagonal bars with polished finish for high-quality fasteners and components.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN8, C45</li>
+                                <li>Size: 6mm to 65mm AF</li>
+                                <li>Finish: Cold Drawn & Polished</li>
+                                <li>Application: Bolts, Nuts, Fasteners</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- C45 Plates -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/FW/NL/IO/SELLER-2356369/c-45-steel-plate-500x500.jpg" alt="C45 Carbon Steel Plate" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge plate">Steel Plate</span>
+                        <h3>C45 Plates</h3>
+                        <p>Medium carbon steel plates with excellent machinability and strength for industrial applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: C45 (1.0503)</li>
+                                <li>Thickness: 6mm to 100mm</li>
+                                <li>Size: Custom Cut Available</li>
+                                <li>Application: Machine Parts, Tooling</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- MS Plates -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/334121167/BL/UD/IQ/4034515/mild-steel-plates.jpg" alt="Mild Steel Plate" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge plate">Steel Plate</span>
+                        <h3>MS Plates</h3>
+                        <p>Hot rolled mild steel plates for structural, fabrication, and general engineering applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: IS 2062 (Fe 410/250)</li>
+                                <li>Thickness: 3mm to 100mm</li>
+                                <li>Size: Standard & Custom</li>
+                                <li>Application: Construction, Fabrication</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- EN8 Flat Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/CX/VX/AQ/63421244/en-8-ms-flat-bar-500x500.jpg" alt="EN8 Alloy Steel Flat Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge">Alloy Steel</span>
+                        <h3>EN8 Flat Bars</h3>
+                        <p>Medium carbon steel flat bars with good machinability and strength.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN8 (1.2311)</li>
+                                <li>Width: 25mm to 150mm</li>
+                                <li>Thickness: 3mm to 50mm</li>
+                                <li>Application: Structural, Fabrication</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- EN19 Flat Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/BW/OT/YT/63421244/en-19-ms-flat-bar-250x250.jpg" alt="EN19 Alloy Steel Flat Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge">Alloy Steel</span>
+                        <h3>EN19 Flat Bars</h3>
+                        <p>High tensile alloy steel flats for heavy-duty applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN19 (42CrMo4)</li>
+                                <li>Width: 25mm to 200mm</li>
+                                <li>Thickness: 5mm to 60mm</li>
+                                <li>Application: Machine Parts</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
+                <!-- EN8 Square Bars -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2021/12/KQ/YM/XM/63421244/en-9-ms-square-bar-250x250.jpg" alt="EN8 Square Bar" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-badge">Alloy Steel</span>
+                        <h3>EN8 Square Bars</h3>
+                        <p>Medium carbon steel squares for general engineering applications.</p>
+                        <div class="product-specs">
+                            <h4>Specifications</h4>
+                            <ul>
+                                <li>Grade: EN8 (080M40)</li>
+                                <li>Size: 10mm to 100mm</li>
+                                <li>Finish: Black/Bright</li>
+                                <li>Application: Shafts, Pins</li>
+                            </ul>
+                        </div>
+                        <a href="enquiry-request.html" class="product-cta">Request Enquiry →</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section class="why-choose">
+    <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">Why Choose Bhavya Steel Industries</h2>
+            <h2 class="section-title">About Us</h2>
             <p class="section-subtitle">Your Trusted Partner in Steel Supply</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-warehouse"></i>
-                    </div>
-                    <h3>Extensive Inventory</h3>
-                    <p>Large stock of alloy steel, mild steel, bright bars, and plates in various grades and sizes</p>
+            <div class="about-content">
+                <div class="about-logo-section">
+                    <img src="https://nyc3.digitaloceanspaces.com/bhindi-drive/files/06e55b93-bca6-486a-8129-f74357572559/2026-02-04T05-43-20-662Z-5313efa2-chat-image-1770183800643-0.jpg" alt="Bhavya Steel Industries Logo" class="about-logo">
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="about-text">
+                    <h3>Excellence in Steel Distribution</h3>
+                    <p>Bhavya Steel Industries is a premier stockist and supplier of high-quality alloy steel and mild steel products based in Naroda, Ahmedabad. With a commitment to excellence and customer satisfaction, we serve diverse industries including construction, manufacturing, automotive, and engineering sectors across Gujarat.</p>
+                    <p>Our extensive inventory includes premium alloy steel grades (EN19, EN24, EN31, EN8, SAE 4140, D2, F11), mild steel products in various forms (round bars, square bars, flat bars, hexagon bars), bright bars with superior finish, C45 plates, MS plates, metal strips, stainless steel plates, and a comprehensive range of industrial tools and hardware.</p>
+                    <p>Strategically located near NH-8 in Naroda, we ensure timely delivery and competitive pricing while maintaining the highest quality standards. Our experienced team provides expert technical support to help you select the right materials for your specific applications.</p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-industry"></i>
+                        <span>Comprehensive Product Range</span>
+                    </div>
+                    <div class="feature">
                         <i class="fas fa-certificate"></i>
+                        <span>Quality Certified Materials</span>
                     </div>
-                    <h3>Quality Certified</h3>
-                    <p>All materials meet international standards with proper certifications and test reports</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-truck"></i>
+                    <div class="feature">
+                        <i class="fas fa-shipping-fast"></i>
+                        <span>Timely Delivery Guaranteed</span>
                     </div>
-                    <h3>Timely Delivery</h3>
-                    <p>Strategic location near NH-8 ensures fast delivery across Gujarat and neighboring states</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature">
                         <i class="fas fa-tags"></i>
+                        <span>Competitive Market Pricing</span>
                     </div>
-                    <h3>Competitive Pricing</h3>
-                    <p>Direct stockist pricing with flexible payment terms for bulk orders</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cut"></i>
+                    <div class="feature">
+                        <i class="fas fa-handshake"></i>
+                        <span>Trusted by Industries</span>
                     </div>
-                    <h3>Custom Cutting</h3>
-                    <p>Precision cutting and machining services available as per your specifications</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature">
                         <i class="fas fa-headset"></i>
+                        <span>Expert Technical Support</span>
                     </div>
-                    <h3>Expert Support</h3>
-                    <p>Technical consultation to help you select the right materials for your applications</p>
+                </div>
+                <div class="gst-info">
+                    <p><strong>GST Number:</strong> 24AWIPK1900F1Z1</p>
+                    <p><strong>Location:</strong> Plot No: 335/B, Chamunda Chawl, Below Satguru Swami Teooramji Maharaj Overbridge, Near Railway Crossing, Naroda, NH-8, Ahmedabad, Gujarat</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section">
+    <section id="contact" class="contact">
         <div class="container">
-            <div class="cta-content">
-                <h2>Need Steel Products? Get a Quote Today</h2>
-                <p>Contact us for competitive pricing and expert consultation on your steel requirements</p>
-                <div class="cta-buttons">
-                    <a href="quote.html" class="btn btn-primary">Request Quote</a>
-                    <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Get in touch for enquiries, and expert consultation</p>
+            <div class="contact-grid">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>Plot No: 335/B, Chamunda Chawl<br>Below Satguru Swami Teooramji Maharaj Overbridge<br>Near Railway Crossing, Naroda, NH-8<br>Ahmedabad, Gujarat, India</p>
+                </div>
+                <div class="info-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp / Call</h3>
+                    <p><strong>Gautam Kapasi</strong><br><a href="https://wa.me/919409420760" class="whatsapp-link">+91 9409420760</a></p>
+                    <p style="margin-top: 1rem;"><strong>Raj Kapasi</strong><br><a href="https://wa.me/919327703647" class="whatsapp-link">+91 9327703647</a></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Address</h3>
+                    <p><a href="mailto:bhavyasteelindustries20@gmail.com" style="color: var(--grey); text-decoration: none; font-weight: 700;">bhavyasteelindustries20@gmail.com</a></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-id-card"></i>
+                    <h3>GST Number</h3>
+                    <p style="font-weight: 700; font-size: 1.05rem; color: var(--dark);">24AWIPK1900F1Z1</p>
                 </div>
             </div>
         </div>
@@ -191,21 +1357,21 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="industries.html">Industries</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="quote.html">Request Quote</a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="enquiry-request.html">Request Enquiry</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Product Categories</h3>
                     <ul>
-                        <li><a href="alloy-steel.html">Alloy Steel</a></li>
-                        <li><a href="mild-steel.html">Mild Steel Products</a></li>
-                        <li><a href="bright-bars.html">Bright Bars</a></li>
-                        <li><a href="steel-plates.html">Steel Plates</a></li>
+                        <li>Alloy Steel (EN19, EN24, EN31, EN8)</li>
+                        <li>Mild Steel Products</li>
+                        <li>Bright Bars & Polished Bars</li>
+                        <li>Steel Plates (C45, MS)</li>
+                        <li>Tools & Hardware</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -222,6 +1388,27 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
