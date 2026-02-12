@@ -420,7 +420,97 @@
             letter-spacing: 0.3px;
         }
 
-        /* Products Section - FIXED */
+        /* About Section */
+        .about {
+            background: var(--light);
+        }
+
+        .about-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .about-text h3 { 
+            font-size: 2rem; 
+            margin-bottom: 1.75rem; 
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.8px;
+        }
+        
+        .about-text p { 
+            margin-bottom: 1.75rem; 
+            color: var(--grey);
+            line-height: 1.9; 
+            font-size: 1.08rem;
+            font-weight: 500;
+        }
+        
+        .features { 
+            margin-top: 3.5rem; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 1.75rem; 
+        }
+        
+        .feature { 
+            display: flex; 
+            align-items: center; 
+            gap: 1.25rem; 
+            background: white;
+            padding: 1.75rem; 
+            border-radius: 14px; 
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-accent);
+        }
+        
+        .feature i { 
+            font-size: 2rem;
+            min-width: 40px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature span {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.98rem;
+        }
+        
+        .gst-info { 
+            margin-top: 3.5rem; 
+            padding: 2.5rem; 
+            background: var(--gradient-dark);
+            color: white;
+            border-radius: 18px; 
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .gst-info p {
+            margin-bottom: 0.85rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .gst-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Products Section */
         .products {
             background: var(--white);
         }
@@ -624,6 +714,71 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* Contact Section */
+        .contact {
+            background: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 18px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-accent);
+        }
+
+        .info-card i {
+            font-size: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.25rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.85rem;
+            color: var(--dark);
+            font-weight: 900;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.3px;
+        }
+
+        .info-card p {
+            color: var(--grey);
+            font-size: 0.98rem;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .whatsapp-link {
+            color: #059669;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-link:hover {
+            text-decoration: underline;
+        }
+
         /* Footer */
         footer { 
             background: var(--gradient-dark);
@@ -695,7 +850,7 @@
             font-weight: 600;
         }
 
-        /* Responsive - FIXED */
+        /* Responsive */
         @media (max-width: 1200px) {
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -719,6 +874,9 @@
             .product-image-wrapper {
                 height: 250px;
             }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -735,9 +893,9 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#products">Products</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li><a href="enquiry-request.html" class="cta-btn">Get Enquiry</a></li>
                 </ul>
             </div>
@@ -758,7 +916,7 @@
                 <p class="hero-desc">Leading supplier of high-grade alloy steel (EN19, EN24, EN31, EN8, SAE 4140, D2, F11), mild steel products, bright bars, C45 plates, MS plates, and industrial hardware. Serving industries across Gujarat with quality materials and reliable service.</p>
                 <div class="hero-buttons">
                     <a href="#products" class="btn btn-primary">View Products</a>
-                    <a href="enquiry-request.html" class="btn btn-secondary">Request Enquiry</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -783,6 +941,52 @@
             </div>
         </div>
     </div>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-subtitle">Your Trusted Partner in Premium Steel Solutions</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Bhavya Steel Industries</h3>
+                    <p>Established as a premier stockist and supplier of high-quality alloy steel and mild steel products, Bhavya Steel Industries has been serving the industrial sector in Naroda, Ahmedabad, and across Gujarat with dedication and excellence.</p>
+                    <p>We specialize in providing a comprehensive range of steel products including EN8, EN19, EN24, EN31 alloy steel round bars, mild steel products, bright bars, C45 plates, MS plates, and a complete range of industrial hardware and tools.</p>
+                    <p>Our commitment to quality, competitive pricing, and timely delivery has made us a trusted name in the steel industry. We maintain extensive inventory to ensure immediate availability of materials for our customers' diverse requirements.</p>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Premium Quality Materials</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-warehouse"></i>
+                        <span>Extensive Inventory Stock</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-truck"></i>
+                        <span>Fast & Reliable Delivery</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tags"></i>
+                        <span>Competitive Pricing</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <span>Expert Customer Support</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-certificate"></i>
+                        <span>GST Certified Business</span>
+                    </div>
+                </div>
+                <div class="gst-info">
+                    <p><strong>Business Name:</strong> Bhavya Steel Industries</p>
+                    <p><strong>GST Number:</strong> 24AWIPK1900F1Z1</p>
+                    <p><strong>Location:</strong> Plot No: 335/B, Chamunda Chawl, Below Satguru Swami Teooramji Maharaj Overbridge, Near Railway Crossing, Naroda, NH-8, Ahmedabad, Gujarat, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="products" id="products">
         <div class="container">
@@ -1124,6 +1328,32 @@
         </div>
     </section>
 
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Get in touch for enquiries and expert consultation</p>
+            <div class="contact-grid">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Our Location</h3>
+                    <p>Plot No: 335/B, Chamunda Chawl<br>Below Satguru Swami Teooramji Maharaj Overbridge<br>Near Railway Crossing, Naroda, NH-8<br>Ahmedabad, Gujarat, India</p>
+                </div>
+                <div class="info-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp / Call</h3>
+                    <p><strong>Gautam Kapasi</strong><br><a href="https://wa.me/919409420760" class="whatsapp-link">+91 9409420760</a></p>
+                    <p style="margin-top: 1rem;"><strong>Raj Kapasi</strong><br><a href="https://wa.me/919327703647" class="whatsapp-link">+91 9327703647</a></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:bhavyasteelindustries20@gmail.com" style="color: var(--primary-accent); text-decoration: none; font-weight: 800;">bhavyasteelindustries20@gmail.com</a></p>
+                    <p style="margin-top: 1.5rem;"><strong>Business Hours:</strong><br>Monday - Saturday: 9:00 AM - 7:00 PM<br>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1137,9 +1367,9 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#about">About Us</a></li>
                         <li><a href="#products">Products</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#contact">Contact</a></li>
                         <li><a href="enquiry-request.html">Request Enquiry</a></li>
                     </ul>
                 </div>
