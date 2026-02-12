@@ -20,22 +20,8 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
     successMessage.classList.remove('show');
     errorMessage.classList.remove('show');
     
-    // Collect form data for email
-    const emailFormData = new FormData();
-    emailFormData.append('Name', document.getElementById('name').value.trim());
-    emailFormData.append('Email', document.getElementById('email').value.trim());
-    emailFormData.append('Phone', document.getElementById('phone').value.trim());
-    emailFormData.append('Company', document.getElementById('company').value.trim());
-    emailFormData.append('Product', document.getElementById('product').value);
-    emailFormData.append('Quantity', document.getElementById('quantity').value.trim());
-    emailFormData.append('Unit', document.getElementById('unit').value);
-    emailFormData.append('Message', document.getElementById('message').value.trim());
-    emailFormData.append('_subject', 'New Quote Request - ' + document.getElementById('product').value);
-    emailFormData.append('_template', 'table');
-    emailFormData.append('_captcha', 'false');
-    
-    // Collect form data for Google Sheets
-    const sheetData = {
+    // Collect form data
+    const formData = {
         name: document.getElementById('name').value.trim(),
         email: document.getElementById('email').value.trim(),
         phone: document.getElementById('phone').value.trim(),
@@ -47,67 +33,64 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
     };
     
     try {
-        // Send to BOTH email and Google Sheets in parallel
-        const [emailResponse, sheetResponse] = await Promise.allSettled([
-            // Send email
-            fetch(EMAIL_ENDPOINT, {
+        // Send to Google Sheets (PRIMARY)
+        const sheetResponse = await fetch(SHEET_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+            redirect: 'follow'
+        });
+        
+        const sheetResult = await sheetResponse.json();
+        
+        if (!sheetResponse.ok || !sheetResult.success) {
+            throw new Error(sheetResult.message || 'Failed to save to Google Sheets');
+        }
+        
+        // Also send email notification (SECONDARY - don't fail if this fails)
+        try {
+            const emailFormData = new FormData();
+            emailFormData.append('Name', formData.name);
+            emailFormData.append('Email', formData.email);
+            emailFormData.append('Phone', formData.phone);
+            emailFormData.append('Company', formData.company);
+            emailFormData.append('Product', formData.product);
+            emailFormData.append('Quantity', formData.quantity);
+            emailFormData.append('Unit', formData.unit);
+            emailFormData.append('Message', formData.message);
+            emailFormData.append('_subject', 'New Quote Request - ' + formData.product);
+            emailFormData.append('_template', 'table');
+            emailFormData.append('_captcha', 'false');
+            
+            await fetch(EMAIL_ENDPOINT, {
                 method: 'POST',
                 body: emailFormData,
                 headers: {
                     'Accept': 'application/json'
                 }
-            }),
-            // Send to Google Sheets
-            fetch(SHEET_ENDPOINT, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(sheetData)
-            })
-        ]);
-        
-        // Check email response
-        let emailSuccess = false;
-        if (emailResponse.status === 'fulfilled') {
-            const emailResult = await emailResponse.value.json();
-            emailSuccess = emailResponse.value.ok && emailResult.success;
+            });
+        } catch (emailError) {
+            console.log('Email notification failed (non-critical):', emailError);
         }
         
-        // Google Sheets with no-cors mode always succeeds (we can't check response)
-        // So we assume it worked if no error was thrown
-        const sheetSuccess = sheetResponse.status === 'fulfilled';
+        // Success
+        successMessage.querySelector('p').textContent = sheetResult.message || 'Quote request submitted successfully! We will contact you soon.';
+        successMessage.classList.add('show');
         
-        if (emailSuccess || sheetSuccess) {
-            // Success - at least one worked
-            let message = 'Quote request submitted successfully! We will contact you soon.';
-            if (emailSuccess && sheetSuccess) {
-                message = 'Quote request submitted successfully! Email sent and data saved.';
-            } else if (emailSuccess) {
-                message = 'Quote request submitted successfully! Email sent.';
-            } else if (sheetSuccess) {
-                message = 'Quote request submitted successfully! Data saved.';
-            }
-            
-            successMessage.querySelector('p').textContent = message;
-            successMessage.classList.add('show');
-            
-            // Reset form
-            document.getElementById('quoteForm').reset();
-            
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Track conversion (optional - for analytics)
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'quote_submission', {
-                    'event_category': 'engagement',
-                    'event_label': sheetData.product
-                });
-            }
-        } else {
-            throw new Error('Failed to submit quote request');
+        // Reset form
+        document.getElementById('quoteForm').reset();
+        
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Track conversion (optional - for analytics)
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'quote_submission', {
+                'event_category': 'engagement',
+                'event_label': formData.product
+            });
         }
         
     } catch (error) {
