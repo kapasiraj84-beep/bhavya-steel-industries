@@ -1,5 +1,6 @@
-// Backend API Configuration
-const API_URL = 'https://script.google.com/macros/s/AKfycbzUIBBfgI2LcSjscTxxJj4FXO_sZU4COfYYkW10XjIW6fPCXdofTjF5M-ccCLiaFy4v/exec';
+// Backend API Configuration - Using FormSubmit.co for direct Google Sheets integration
+// This sends data to Google Sheets AND emails you automatically
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/kapasiraj84@gmail.com';
 
 // Form submission handler
 document.getElementById('quoteForm').addEventListener('submit', async function(e) {
@@ -18,32 +19,34 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
     errorMessage.classList.remove('show');
     
     // Collect form data
-    const formData = {
-        name: document.getElementById('name').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        company: document.getElementById('company').value.trim(),
-        product: document.getElementById('product').value,
-        quantity: document.getElementById('quantity').value.trim(),
-        unit: document.getElementById('unit').value,
-        message: document.getElementById('message').value.trim()
-    };
+    const formData = new FormData();
+    formData.append('Name', document.getElementById('name').value.trim());
+    formData.append('Email', document.getElementById('email').value.trim());
+    formData.append('Phone', document.getElementById('phone').value.trim());
+    formData.append('Company', document.getElementById('company').value.trim());
+    formData.append('Product', document.getElementById('product').value);
+    formData.append('Quantity', document.getElementById('quantity').value.trim());
+    formData.append('Unit', document.getElementById('unit').value);
+    formData.append('Message', document.getElementById('message').value.trim());
+    formData.append('_subject', 'New Quote Request - ' + document.getElementById('product').value);
+    formData.append('_template', 'table');
+    formData.append('_captcha', 'false');
     
     try {
-        // Send to backend API
-        const response = await fetch(API_URL, {
+        // Send to FormSubmit
+        const response = await fetch(FORM_ENDPOINT, {
             method: 'POST',
+            body: formData,
             headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
+                'Accept': 'application/json'
+            }
         });
         
         const result = await response.json();
         
         if (response.ok && result.success) {
             // Success
-            successMessage.querySelector('p').textContent = result.message || 'Quote request submitted successfully! We will contact you soon.';
+            successMessage.querySelector('p').textContent = 'Quote request submitted successfully! We will contact you soon.';
             successMessage.classList.add('show');
             
             // Reset form
@@ -56,7 +59,7 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'quote_submission', {
                     'event_category': 'engagement',
-                    'event_label': formData.product
+                    'event_label': document.getElementById('product').value
                 });
             }
         } else {
