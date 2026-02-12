@@ -1,6 +1,8 @@
-// Backend API Configuration - Using FormSubmit.co for direct Google Sheets integration
-// This sends data to Google Sheets AND emails you automatically
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/kapasiraj84@gmail.com';
+// Backend API Configuration - DUAL SYSTEM
+// 1. FormSubmit sends email to kapasiraj84@gmail.com
+// 2. Apps Script sends data to Google Sheets
+const EMAIL_ENDPOINT = 'https://formsubmit.co/ajax/kapasiraj84@gmail.com';
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzUIBBfgI2LcSjscTxxJj4FXO_sZU4COfYYkW10XjIW6fPCXdofTjF5M-ccCLiaFy4v/exec';
 
 // Form submission handler
 document.getElementById('quoteForm').addEventListener('submit', async function(e) {
@@ -18,35 +20,77 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
     successMessage.classList.remove('show');
     errorMessage.classList.remove('show');
     
-    // Collect form data
-    const formData = new FormData();
-    formData.append('Name', document.getElementById('name').value.trim());
-    formData.append('Email', document.getElementById('email').value.trim());
-    formData.append('Phone', document.getElementById('phone').value.trim());
-    formData.append('Company', document.getElementById('company').value.trim());
-    formData.append('Product', document.getElementById('product').value);
-    formData.append('Quantity', document.getElementById('quantity').value.trim());
-    formData.append('Unit', document.getElementById('unit').value);
-    formData.append('Message', document.getElementById('message').value.trim());
-    formData.append('_subject', 'New Quote Request - ' + document.getElementById('product').value);
-    formData.append('_template', 'table');
-    formData.append('_captcha', 'false');
+    // Collect form data for email
+    const emailFormData = new FormData();
+    emailFormData.append('Name', document.getElementById('name').value.trim());
+    emailFormData.append('Email', document.getElementById('email').value.trim());
+    emailFormData.append('Phone', document.getElementById('phone').value.trim());
+    emailFormData.append('Company', document.getElementById('company').value.trim());
+    emailFormData.append('Product', document.getElementById('product').value);
+    emailFormData.append('Quantity', document.getElementById('quantity').value.trim());
+    emailFormData.append('Unit', document.getElementById('unit').value);
+    emailFormData.append('Message', document.getElementById('message').value.trim());
+    emailFormData.append('_subject', 'New Quote Request - ' + document.getElementById('product').value);
+    emailFormData.append('_template', 'table');
+    emailFormData.append('_captcha', 'false');
+    
+    // Collect form data for Google Sheets
+    const sheetData = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        company: document.getElementById('company').value.trim(),
+        product: document.getElementById('product').value,
+        quantity: document.getElementById('quantity').value.trim(),
+        unit: document.getElementById('unit').value,
+        message: document.getElementById('message').value.trim()
+    };
     
     try {
-        // Send to FormSubmit
-        const response = await fetch(FORM_ENDPOINT, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
+        // Send to BOTH email and Google Sheets in parallel
+        const [emailResponse, sheetResponse] = await Promise.allSettled([
+            // Send email
+            fetch(EMAIL_ENDPOINT, {
+                method: 'POST',
+                body: emailFormData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }),
+            // Send to Google Sheets
+            fetch(SHEET_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(sheetData)
+            })
+        ]);
+        
+        // Check email response
+        let emailSuccess = false;
+        if (emailResponse.status === 'fulfilled') {
+            const emailResult = await emailResponse.value.json();
+            emailSuccess = emailResponse.value.ok && emailResult.success;
+        }
+        
+        // Google Sheets with no-cors mode always succeeds (we can't check response)
+        // So we assume it worked if no error was thrown
+        const sheetSuccess = sheetResponse.status === 'fulfilled';
+        
+        if (emailSuccess || sheetSuccess) {
+            // Success - at least one worked
+            let message = 'Quote request submitted successfully! We will contact you soon.';
+            if (emailSuccess && sheetSuccess) {
+                message = 'Quote request submitted successfully! Email sent and data saved.';
+            } else if (emailSuccess) {
+                message = 'Quote request submitted successfully! Email sent.';
+            } else if (sheetSuccess) {
+                message = 'Quote request submitted successfully! Data saved.';
             }
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok && result.success) {
-            // Success
-            successMessage.querySelector('p').textContent = 'Quote request submitted successfully! We will contact you soon.';
+            
+            successMessage.querySelector('p').textContent = message;
             successMessage.classList.add('show');
             
             // Reset form
@@ -59,12 +103,11 @@ document.getElementById('quoteForm').addEventListener('submit', async function(e
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'quote_submission', {
                     'event_category': 'engagement',
-                    'event_label': document.getElementById('product').value
+                    'event_label': sheetData.product
                 });
             }
         } else {
-            // Error from API
-            throw new Error(result.message || 'Failed to submit quote request');
+            throw new Error('Failed to submit quote request');
         }
         
     } catch (error) {
