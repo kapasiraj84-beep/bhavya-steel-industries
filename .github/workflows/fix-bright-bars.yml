@@ -1,0 +1,70 @@
+name: Fix Bright Bar Grades
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  fix-grades:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Fix Bright Bar grades
+        run: |
+          echo "🔧 Fixing Bright Bar grades..."
+          
+          # Read the file
+          FILE="index.html"
+          
+          # Create Python script to do the replacement
+          cat > fix.py << 'PYTHON_SCRIPT'
+          with open('index.html', 'r') as f:
+              data = f.read()
+          
+          # Replace ONLY in Bright Bar sections
+          bright_bar_products = [
+              'MS Bright Round Bars',
+              'MS Bright Flat Bars',
+              'MS Bright Square Bars',
+              'MS Bright Hexagon Bars'
+          ]
+          
+          replacements = 0
+          for product in bright_bar_products:
+              heading = f'<h3>{product}</h3>'
+              idx = data.find(heading)
+              if idx != -1:
+                  specs_start = data.find('<div class="product-specs">', idx)
+                  specs_end = data.find('</div>', specs_start) + 6
+                  if specs_start != -1 and specs_end != -1:
+                      section = data[specs_start:specs_end]
+                      if '<li>Grade: EN8, C45</li>' in section:
+                          fixed_section = section.replace('<li>Grade: EN8, C45</li>', '<li>Grade: Polished</li>')
+                          data = data[:specs_start] + fixed_section + data[specs_end:]
+                          replacements += 1
+                          print(f'  ✓ Fixed: {product}')
+          
+          with open('index.html', 'w') as f:
+              f.write(data)
+          
+          print(f'\n✓ Made {replacements} replacements')
+          PYTHON_SCRIPT
+          
+          # Run the Python script
+          python3 fix.py
+          
+          # Check if changes were made
+          if git diff --quiet index.html; then
+            echo "No changes needed - file already correct"
+            exit 0
+          fi
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html
+          git commit -m "🔧 FIX: Change Bright Bar grades from 'EN8, C45' to 'Polished'"
+          git push
