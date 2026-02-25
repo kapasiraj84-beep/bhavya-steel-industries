@@ -505,11 +505,11 @@
         /* Loading Spinner */
         .spinner {
             display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-top-color: white;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
             border-radius: 50%;
+            border-top-color: white;
             animation: spin 0.8s linear infinite;
         }
 
@@ -517,27 +517,79 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Honeypot - Hidden from users, visible to bots */
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .info-card p {
+            color: var(--grey);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info-card a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-card a:hover {
+            text-decoration: underline;
+        }
+
         /* Footer */
         footer {
-            background: var(--gradient-dark);
+            background: var(--dark);
             color: white;
             padding: 3rem 24px 2rem;
             text-align: center;
         }
 
         footer p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
         }
 
         /* Responsive */
@@ -545,10 +597,10 @@
             .nav-menu { display: none; }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
-            .form-body { padding: 2rem; }
-            .form-header { padding: 2rem; }
+            .form-body { padding: 2rem 1.5rem; }
+            .form-header { padding: 2rem 1.5rem; }
             .form-grid { grid-template-columns: 1fr; }
-            .checkbox-group { flex-direction: column; }
+            .hero-features { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -565,35 +617,34 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#products">Products</a></li>
                     <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#products">Products</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="quote-request.html" style="color: var(--primary);">Get Quote</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-icon">
-                    <i class="fas fa-file-invoice"></i>
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-file-invoice"></i>
+            </div>
+            <h1>Request a Quote</h1>
+            <p>Share your steel requirements and get a competitive quote within 24 hours. Our experts will help you find the perfect materials for your project.</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Fast Response</span>
                 </div>
-                <h1>Request a Quote</h1>
-                <p>Get competitive pricing for premium quality steel products. Our team will respond within 24 hours with a detailed quotation tailored to your requirements.</p>
-                <div class="hero-features">
-                    <div class="hero-feature">
-                        <i class="fas fa-clock"></i>
-                        <span>24-Hour Response</span>
-                    </div>
-                    <div class="hero-feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Quality Assured</span>
-                    </div>
-                    <div class="hero-feature">
-                        <i class="fas fa-handshake"></i>
-                        <span>Expert Consultation</span>
-                    </div>
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Competitive Pricing</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Expert Consultation</span>
                 </div>
             </div>
         </div>
@@ -603,20 +654,23 @@
         <div class="container">
             <div class="form-container">
                 <div class="form-header">
-                    <h2>Quote Request Form</h2>
-                    <p>Fill in your details and requirements below</p>
+                    <h2>Tell Us About Your Requirements</h2>
+                    <p>Fill out the form below and our team will get back to you shortly</p>
                 </div>
                 <div class="form-body">
-                    <form id="quoteForm">
+                    <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST">
+                        
                         <!-- Web3Forms Access Key -->
                         <input type="hidden" name="access_key" value="2abd78b1-91e4-4f89-9ed8-4f5e703e86e2">
-                        <input type="hidden" name="subject" value="New Quote Request from Bhavya Steel Website">
-                        <input type="hidden" name="from_name" value="Bhavya Steel Quote System">
-                        <input type="hidden" name="redirect" value="quote-thank-you.html">
+                        
+                        <!-- Email Configuration -->
+                        <input type="hidden" name="subject" value="New Quote Request - Bhavya Steel Industries">
+                        <input type="hidden" name="from_name" value="Bhavya Steel Website">
+                        <input type="hidden" name="redirect" value="https://kapasiraj84-beep.github.io/bhavya-steel-industries/quote-thank-you.html">
                         
                         <!-- Honeypot for spam protection -->
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
+                        <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1">
+                        
                         <!-- Contact Information -->
                         <h3 class="form-section-title">
                             <i class="fas fa-user"></i>
@@ -629,23 +683,24 @@
                                 <div class="field-error" id="name-error">Please enter your full name</div>
                             </div>
                             <div class="form-group">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" name="company" class="form-input" placeholder="Your company name" maxlength="100">
+                            </div>
+                            <div class="form-group">
                                 <label class="form-label">Email Address <span class="required">*</span></label>
                                 <input type="email" name="email" class="form-input" placeholder="your.email@example.com" required>
                                 <div class="field-error" id="email-error">Please enter a valid email address</div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Phone Number <span class="required">*</span></label>
-                                <input type="tel" name="phone" class="form-input" placeholder="+91 98765 43210" required pattern="[0-9+\-\s()]+" minlength="10" maxlength="15">
+                                <input type="tel" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX" required pattern="[0-9+\s\-()]{10,15}">
                                 <div class="field-error" id="phone-error">Please enter a valid phone number</div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Company Name</label>
-                                <input type="text" name="company" class="form-input" placeholder="Your company name" maxlength="100">
-                            </div>
-                            <div class="form-group full-width">
-                                <label class="form-label">GST Number (if applicable)</label>
-                                <input type="text" name="gst" class="form-input" placeholder="22AAAAA0000A1Z5" maxlength="15">
-                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">GST Number (if applicable)</label>
+                            <input type="text" name="gst" class="form-input" placeholder="Enter GST number" maxlength="15">
                         </div>
 
                         <!-- Product Requirements -->
@@ -657,11 +712,11 @@
                             <div class="form-group">
                                 <label class="form-label">Product Category <span class="required">*</span></label>
                                 <select name="category" class="form-select" required>
-                                    <option value="">Select a category</option>
-                                    <option value="Alloy Steel">Alloy Steel (EN8, EN19, EN24, EN31)</option>
+                                    <option value="">Select category</option>
+                                    <option value="Alloy Steel">Alloy Steel (EN19, EN24, EN31, EN8, EN9)</option>
                                     <option value="Mild Steel">Mild Steel (Round, Flat, Square)</option>
                                     <option value="Bright Bars">Bright Bars (Polished)</option>
-                                    <option value="Plates">Plates (C45, MS)</option>
+                                    <option value="Steel Plates">Steel Plates (C45, MS)</option>
                                     <option value="Tool Steel">Tool Steel (D2, D3)</option>
                                     <option value="Other">Other / Multiple Products</option>
                                 </select>
@@ -693,10 +748,6 @@
                                     <label for="en31">EN31 Round Bars</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" name="products" value="MS Round Bars" id="msround">
-                                    <label for="msround">MS Round Bars</label>
-                                </div>
-                                <div class="checkbox-item">
                                     <input type="checkbox" name="products" value="MS Flat Bars" id="msflat">
                                     <label for="msflat">MS Flat Bars</label>
                                 </div>
@@ -705,20 +756,8 @@
                                     <label for="mssquare">MS Square Bars</label>
                                 </div>
                                 <div class="checkbox-item">
-                                    <input type="checkbox" name="products" value="MS Bright Round Bar (Polished)" id="brightround">
-                                    <label for="brightround">MS Bright Round Bar (Polished)</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" name="products" value="MS Bright Flat Bar (Polished)" id="brightflat">
-                                    <label for="brightflat">MS Bright Flat Bar (Polished)</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" name="products" value="MS Bright Square Bar (Polished)" id="brightsquare">
-                                    <label for="brightsquare">MS Bright Square Bar (Polished)</label>
-                                </div>
-                                <div class="checkbox-item">
-                                    <input type="checkbox" name="products" value="MS Bright Hexagon Bar (Polished)" id="brighthex">
-                                    <label for="brighthex">MS Bright Hexagon Bar (Polished)</label>
+                                    <input type="checkbox" name="products" value="Bright Bars" id="bright">
+                                    <label for="bright">Bright Bars</label>
                                 </div>
                                 <div class="checkbox-item">
                                     <input type="checkbox" name="products" value="C45 Plates" id="c45">
@@ -749,45 +788,63 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label class="form-label">Delivery Location <span class="required">*</span></label>
-                                <input type="text" name="location" class="form-input" placeholder="City, State" required minlength="3" maxlength="100">
+                                <input type="text" name="location" class="form-input" placeholder="City, State" required minlength="2" maxlength="100">
                                 <div class="field-error" id="location-error">Please enter delivery location</div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Required Date</label>
+                                <label class="form-label">Required By Date</label>
                                 <input type="date" name="required_date" class="form-input">
                             </div>
                         </div>
 
                         <div class="form-group full-width">
                             <label class="form-label">Additional Notes / Special Requirements</label>
-                            <textarea name="notes" class="form-textarea" placeholder="Any additional information, special requirements, or questions..." maxlength="1000"></textarea>
+                            <textarea name="notes" class="form-textarea" placeholder="Any additional information, special requirements, or questions you'd like to share..." maxlength="1000"></textarea>
                         </div>
 
-                        <!-- Submit Section -->
                         <div class="submit-section">
                             <button type="submit" class="btn-submit" id="submitBtn">
                                 <i class="fas fa-paper-plane"></i>
-                                <span>Submit Quote Request</span>
+                                Submit Quote Request
                             </button>
                             <p style="margin-top: 1rem; color: var(--grey); font-size: 0.9rem;">
-                                <i class="fas fa-lock"></i> Your information is secure and will only be used to process your quote request.
+                                We'll respond within 24 hours with a detailed quote
                             </p>
                         </div>
-
-                        <!-- Success Message -->
-                        <div class="success-message" id="successMessage">
-                            <i class="fas fa-check-circle"></i>
-                            <h3>Quote Request Submitted Successfully!</h3>
-                            <p>Thank you for your interest. Our team will review your requirements and get back to you within 24 hours.</p>
-                        </div>
-
-                        <!-- Error Message -->
-                        <div class="error-message" id="errorMessage">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <h3>Submission Failed</h3>
-                            <p>We're sorry, but there was an error submitting your request. Please try again or contact us directly at <strong>+91 98765 43210</strong></p>
-                        </div>
                     </form>
+
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Quote Request Submitted!</h3>
+                        <p>Thank you for your inquiry. Our team will review your requirements and get back to you within 24 hours.</p>
+                    </div>
+
+                    <div class="error-message" id="errorMessage">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h3>Submission Failed</h3>
+                        <p id="errorText">Something went wrong. Please try again or contact us directly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>Quick Response</h3>
+                    <p>Need urgent quote? WhatsApp us directly:<br>
+                    <a href="https://wa.me/919409420760">+91 9409420760</a><br>
+                    <a href="https://wa.me/919327703647">+91 9327703647</a></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>Send your requirements to:<br>
+                    <a href="mailto:bhavyasteelindustries20@gmail.com">bhavyasteelindustries20@gmail.com</a></p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Saturday<br>9:00 AM - 7:00 PM<br>Sunday: Closed</p>
                 </div>
             </div>
         </div>
@@ -795,81 +852,93 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Bhavya Steel Industries. All rights reserved. | <a href="index.html">Back to Home</a></p>
+            <p>&copy; 2024 Bhavya Steel Industries. All rights reserved. | GST: 24AWIPK1900F1Z1</p>
         </div>
     </footer>
 
     <script>
         // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
 
-        // Form validation and submission
+        // Enhanced form validation and submission
         const form = document.getElementById('quoteForm');
         const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
 
         // Real-time validation
-        const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-        });
+        const validateField = (field) => {
+            const errorDiv = document.getElementById(`${field.name}-error`);
+            if (!errorDiv) return true;
 
-        function validateField(field) {
-            const errorDiv = document.getElementById(field.name + '-error');
             if (!field.validity.valid) {
                 field.classList.add('error');
-                if (errorDiv) errorDiv.classList.add('show');
+                errorDiv.classList.add('show');
                 return false;
             } else {
                 field.classList.remove('error');
-                if (errorDiv) errorDiv.classList.remove('show');
+                errorDiv.classList.remove('show');
                 return true;
             }
-        }
+        };
 
-        // Form submission
+        // Add validation listeners
+        ['name', 'email', 'phone', 'category', 'specifications', 'location'].forEach(fieldName => {
+            const field = document.querySelector(`[name="${fieldName}"]`);
+            if (field) {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.classList.contains('error')) {
+                        validateField(field);
+                    }
+                });
+            }
+        });
+
+        // Form submission with DUAL submission (Web3Forms + Google Sheets)
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-
+            
             // Validate all required fields
             let isValid = true;
-            inputs.forEach(input => {
-                if (!validateField(input)) {
+            ['name', 'email', 'phone', 'category', 'specifications', 'location'].forEach(fieldName => {
+                const field = document.querySelector(`[name="${fieldName}"]`);
+                if (field && !validateField(field)) {
                     isValid = false;
                 }
             });
 
             if (!isValid) {
+                errorText.textContent = 'Please fill in all required fields correctly.';
+                errorMessage.classList.add('show');
+                setTimeout(() => errorMessage.classList.remove('show'), 5000);
                 return;
             }
-
+            
             // Disable submit button and show loading
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner"></span> <span>Sending...</span>';
-
+            submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+            
             // Hide previous messages
             successMessage.classList.remove('show');
             errorMessage.classList.remove('show');
 
             try {
-                // Collect form data
                 const formData = new FormData(form);
-
-                // Collect selected products
+                
+                // Collect checkbox values for products
                 const productCheckboxes = document.querySelectorAll('input[name="products"]:checked');
                 const products = Array.from(productCheckboxes).map(cb => cb.value);
-
-                // Prepare data for Google Sheets (background submission)
+                
+                // Prepare data for Google Sheets
                 const sheetData = {
                     name: formData.get('name') || '',
                     email: formData.get('email') || '',
@@ -885,7 +954,7 @@
                     notes: formData.get('notes') || ''
                 };
 
-                // Submit to Google Sheets (background, no-cors)
+                // Submit to Google Sheets (don't wait for it)
                 fetch('https://script.google.com/macros/s/AKfycbzFEY5tS2zDypI9h8LdHt_eupbcnC4sfVsvo-OBHkSqrZBK0kz_bxHcvqosl--YnQzFhg/exec', {
                     method: 'POST',
                     mode: 'no-cors',
@@ -894,7 +963,7 @@
                     },
                     body: JSON.stringify(sheetData)
                 }).catch(err => console.log('Google Sheets submission (background):', err));
-
+                
                 // Submit to Web3Forms (primary submission)
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
@@ -904,27 +973,28 @@
                 const data = await response.json();
 
                 if (data.success) {
-                    // Show success message
+                    // Success!
                     successMessage.classList.add('show');
-                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    
-                    // Reset form
                     form.reset();
+                    window.scrollTo({ top: successMessage.offsetTop - 100, behavior: 'smooth' });
                     
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Submit Quote Request</span>';
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Quote Request';
+                    }, 2000);
                 } else {
-                    throw new Error('Submission failed');
+                    throw new Error(data.message || 'Submission failed');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Submission error:', error);
+                errorText.textContent = 'Unable to submit form. Please email us directly at bhavyasteelindustries20@gmail.com or call +91 9409420760';
                 errorMessage.classList.add('show');
-                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                window.scrollTo({ top: errorMessage.offsetTop - 100, behavior: 'smooth' });
                 
-                // Re-enable button
+                // Reset button
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Submit Quote Request</span>';
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Quote Request';
             }
         });
     </script>
