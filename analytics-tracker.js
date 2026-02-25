@@ -1,96 +1,78 @@
-// Bhavya Steel Industries - Website Analytics Tracker
-// Tracks visitor data and sends to Google Sheets
+// Bhavya Steel Industries - Simple Visitor Tracker
+// Tracks: Who visits, what they view, how long they stay
 
 (function() {
     'use strict';
     
-    // Configuration
-    const SHEET_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec';
-    const TRACK_ENABLED = true;
+    // STEP 1: Deploy google-apps-script.js as Web App
+    // STEP 2: Paste deployment URL below
+    const SHEET_URL = 'YOUR_DEPLOYMENT_URL_HERE';
     
-    // Get visitor information
-    function getVisitorData() {
-        const data = {
-            timestamp: new Date().toISOString(),
-            pageUrl: window.location.href,
-            pagePath: window.location.pathname,
-            pageTitle: document.title,
-            referrer: document.referrer || 'Direct',
-            userAgent: navigator.userAgent,
-            screenResolution: `${screen.width}x${screen.height}`,
-            language: navigator.language,
-            platform: navigator.platform
-        };
-        
-        // Detect device type
-        const ua = navigator.userAgent;
-        if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-            data.deviceType = 'Tablet';
-        } else if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
-            data.deviceType = 'Mobile';
-        } else {
-            data.deviceType = 'Desktop';
-        }
-        
-        // Detect browser
-        if (ua.indexOf('Firefox') > -1) {
-            data.browser = 'Firefox';
-        } else if (ua.indexOf('Chrome') > -1) {
-            data.browser = 'Chrome';
-        } else if (ua.indexOf('Safari') > -1) {
-            data.browser = 'Safari';
-        } else if (ua.indexOf('Edge') > -1) {
-            data.browser = 'Edge';
-        } else {
-            data.browser = 'Other';
-        }
-        
-        return data;
-    }
-    
-    // Track page view
-    function trackPageView() {
-        if (!TRACK_ENABLED) return;
-        
-        const data = getVisitorData();
-        
-        // Send to Google Sheets (when Apps Script is deployed)
-        // fetch(SHEET_URL, {
-        //     method: 'POST',
-        //     mode: 'no-cors',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // }).catch(err => console.log('Analytics tracking error:', err));
-        
-        // Log to console for now
-        console.log('📊 Page View Tracked:', data);
-    }
-    
-    // Track time on page
     let startTime = Date.now();
+    let visitorData = {
+        type: 'visitor',
+        pageUrl: window.location.href,
+        pagePath: window.location.pathname,
+        pageTitle: document.title,
+        referrer: document.referrer || 'Direct',
+        userAgent: navigator.userAgent,
+        deviceType: getDeviceType(),
+        browser: getBrowser(),
+        timeOnPage: 0
+    };
+    
+    // Detect device type
+    function getDeviceType() {
+        const ua = navigator.userAgent;
+        if (/(tablet|ipad)/i.test(ua)) return 'Tablet';
+        if (/Mobile|Android|iPhone/i.test(ua)) return 'Mobile';
+        return 'Desktop';
+    }
+    
+    // Detect browser
+    function getBrowser() {
+        const ua = navigator.userAgent;
+        if (ua.indexOf('Firefox') > -1) return 'Firefox';
+        if (ua.indexOf('Chrome') > -1) return 'Chrome';
+        if (ua.indexOf('Safari') > -1) return 'Safari';
+        if (ua.indexOf('Edge') > -1) return 'Edge';
+        return 'Other';
+    }
+    
+    // Send data to Google Sheets
+    function sendToSheet(data) {
+        if (SHEET_URL === 'YOUR_DEPLOYMENT_URL_HERE') {
+            console.log('📊 Visitor tracked (local):', data);
+            return;
+        }
+        
+        fetch(SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        }).catch(err => console.log('Analytics error:', err));
+    }
+    
+    // Track page view on load
+    sendToSheet(visitorData);
+    
+    // Track time on page when leaving
     window.addEventListener('beforeunload', function() {
-        const timeOnPage = Math.round((Date.now() - startTime) / 1000);
-        console.log('⏱️ Time on page:', timeOnPage, 'seconds');
+        visitorData.timeOnPage = Math.round((Date.now() - startTime) / 1000);
+        sendToSheet(visitorData);
     });
     
     // Track button clicks
     document.addEventListener('click', function(e) {
         const target = e.target.closest('a, button');
-        if (target) {
-            const action = target.textContent.trim();
-            const href = target.href || '';
-            
-            if (action.includes('Enquiry') || action.includes('WhatsApp') || action.includes('Call')) {
-                console.log('🎯 CTA Click:', action, href);
-            }
+        if (!target) return;
+        
+        const text = target.textContent.trim();
+        if (text.includes('Enquiry') || text.includes('WhatsApp') || text.includes('Call')) {
+            const clickData = {...visitorData, buttonClicked: text};
+            sendToSheet(clickData);
         }
     });
-    
-    // Initialize tracking
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', trackPageView);
-    } else {
-        trackPageView();
-    }
     
 })();
