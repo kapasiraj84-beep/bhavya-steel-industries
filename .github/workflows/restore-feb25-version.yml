@@ -8,18 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
         
-      - name: Restore index.html from Feb 25 (commit bee24d5)
+      - name: Configure Git
         run: |
-          git checkout bee24d5a784d8778501e8d32524c5312b281f405 -- index.html
-          
-      - name: Commit restored file
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Restore index.html from Feb 25
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git show bee24d5a784d8778501e8d32524c5312b281f405:index.html > index.html
           git add index.html
-          git commit -m "🔄 RESTORE: Complete website from Feb 25 (before all today's experimental changes)"
+          git commit -m "🔄 RESTORE: Complete Feb 25 website (before all today's changes)"
           git push
