@@ -10,7 +10,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Configure Git
@@ -18,9 +17,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
       
-      - name: Restore index.html from Feb 25
+      - name: Download and restore Feb 25 version
         run: |
-          git show bee24d5a784d8778501e8d32524c5312b281f405:index.html > index.html
+          curl -L "https://github.com/kapasiraj84-beep/bhavya-steel-industries/raw/9f5c54d8ad4a69b6d14e32f15014fe60bcc7ff47/index.html" -o index.html
           git add index.html
           git commit -m "🔄 RESTORE: Complete Feb 25 website (before all today's changes)"
           git push
