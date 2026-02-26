@@ -1,0 +1,25 @@
+name: Restore Feb 25 Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+        
+      - name: Restore index.html from Feb 25 (commit bee24d5)
+        run: |
+          git checkout bee24d5a784d8778501e8d32524c5312b281f405 -- index.html
+          
+      - name: Commit restored file
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html
+          git commit -m "🔄 RESTORE: Complete website from Feb 25 (before all today's experimental changes)"
+          git push
