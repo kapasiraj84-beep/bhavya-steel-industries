@@ -1,0 +1,41 @@
+name: Apply Google Maps Links
+
+on:
+  workflow_dispatch:
+
+jobs:
+  apply-links:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Make script executable
+        run: chmod +x add-maps-links-now.sh
+        
+      - name: Run script to add Google Maps links
+        run: ./add-maps-links-now.sh
+        
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html
+          git diff --staged --quiet || git commit -m "🗺️ ADD: Clickable Google Maps links to all location addresses
+
+          Minimal changes - only wrapped addresses in <a> tags:
+          - Contact section: Full address now clickable
+          - GST section: Location address now clickable  
+          - Footer: Location now clickable
+          
+          All links open Google Maps with directions to:
+          Satguru Swami Teoonramji Maharaj Overbridge, Naroda, Ahmedabad
+          
+          Google Maps URL: https://www.google.com/maps/dir/?api=1&destination=23.0910902,72.6620856"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
